@@ -39,10 +39,11 @@ public class Naturalistia {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-        //·½¿é×¢²á
+        //ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
         BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        //ÎïÆ·×¢²á
+        //ï¿½ï¿½Æ·×¢ï¿½ï¿½
         ItemRegister.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        TileEntityRegister.TILE_ENTITY.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event) {

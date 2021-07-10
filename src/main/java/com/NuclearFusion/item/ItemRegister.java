@@ -13,7 +13,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import javax.annotation.Nonnull;
 
 public class ItemRegister {
-    //ÎïÆ·×¢²á
+    //ï¿½ï¿½Æ·×¢ï¿½ï¿½
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Naturalistia.MOD_ID);
 
     public static final RegistryObject<Item> crucible_made_of_plants = ITEMS.register("crucible_made_of_plants", () -> new BlockItem(BlockRegistry.crucible_made_of_plants.get(), defaultBuilder()));
@@ -23,7 +23,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> datura = ITEMS.register("datura", () -> new BlockItem(BlockRegistry.datura.get(), defaultBuilder()));
     public static final RegistryObject<Item> skyfaery = ITEMS.register("skyfaery", () -> new BlockItem(BlockRegistry.skyfaery.get(), defaultBuilder()));
 
-    //±êÇ©Ò³
+    //ï¿½ï¿½Ç©Ò³
     public static ItemGroup creativeTab = new ItemGroup(Naturalistia.MOD_ID) {
         @Nonnull
         @Override
@@ -33,7 +33,7 @@ public class ItemRegister {
     };
 
     /**
-     * ×Ô¶¯µ¼Èëµ½±êÇ©Ò³
+     * ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ëµ½ï¿½ï¿½Ç©Ò³
      */
     public static Item.Properties defaultBuilder() {
         return new Item.Properties().group(creativeTab);

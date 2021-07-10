@@ -1,4 +1,4 @@
-package com.NuclearFusion.datagen;
+package com.NuclearFusion.event;
 
 import com.NuclearFusion.datagen.LootTable.LootProvider;
 import com.NuclearFusion.datagen.Recipes.CrucibleMadeOfPlants;

@@ -19,30 +19,30 @@ public class BlockRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Naturalistia.MOD_ID);
 
     public static final RegistryObject<Block> crucible_made_of_plants = BLOCKS.register("crucible_made_of_plants", BlockCrucibleMadeOfPlants::new);
-    //×÷Îï
+    //ï¿½ï¿½ï¿½ï¿½
     public static final RegistryObject<Block> belladonna = BLOCKS.register("belladonna", Belladonna::new);
     public static final RegistryObject<Block> chilipepper = BLOCKS.register("chilipepper", Chilipepper::new);
     public static final RegistryObject<Block> datura = BLOCKS.register("datura", Datura::new);
     public static final RegistryObject<Block> skyfaery = BLOCKS.register("skyfaery", Skyfaery::new);
 
     /**
-     * ÓÃÓÚ»ñÈ¡modËù×¢²áµÄËùÓÐ·½¿é
+     * ï¿½ï¿½ï¿½Ú»ï¿½È¡modï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½
      *
-     * @return ÒÑ×¢²á·½¿éµÄÊý×é
+     * @return ï¿½ï¿½×¢ï¿½á·½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      */
     public static ArrayList<RegistryObject<Block>> getBlocks() {
         return new ArrayList<>(BLOCKS.getEntries());
     }
 
     /**
-     * ·½¿é¹¹Ôì·½·¨
+     * ï¿½ï¿½ï¿½é¹¹ï¿½ì·½ï¿½ï¿½
      */
     public static AbstractBlock.Properties defaultBuilder(Material material) {
         return AbstractBlock.Properties.create(material);
     }
 
     /**
-     * ¿óÎï¹¹Ôì·½·¨
+     * ï¿½ï¿½ï¿½ï¹¹ï¿½ì·½ï¿½ï¿½
      */
     public static AbstractBlock.Properties defaultBuilder() {
         return AbstractBlock.Properties.create(Material.STRUCTURE_VOID)
