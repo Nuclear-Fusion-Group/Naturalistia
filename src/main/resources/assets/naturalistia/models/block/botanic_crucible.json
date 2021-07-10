@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "植物工艺/crucible",
-		"particle": "植物工艺/crucible"
+		"0": "naturalistia:blocks/botanic_crucible",
+		"particle": "naturalistia:blocks/botanic_crucible"
 	},
 	"elements": [
 		{
