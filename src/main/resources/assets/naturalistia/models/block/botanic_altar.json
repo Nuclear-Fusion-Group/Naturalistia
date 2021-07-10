@@ -1,9 +1,17 @@
 {
+	"parent": "block/block",
 	"credit": "Made with Blockbench",
 	"texture_size": [128, 128],
 	"textures": {
-		"0": "植物工艺/altar",
-		"particle": "植物工艺/altar"
+		"0": "naturalistia:blocks/botanic_altar",
+		"particle": "naturalistia:blocks/botanic_altar"
+	},
+	"display": {
+		"fixed": {
+			"rotation": [ 0, 90, 0 ],
+			"translation": [ 0, 0, 0 ],
+			"scale": [ 0.5, 0.5, 0.5 ]
+		}
 	},
 	"elements": [
 		{

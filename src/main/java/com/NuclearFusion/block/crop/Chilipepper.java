@@ -13,6 +13,6 @@ public class Chilipepper extends CropsBlock {
 
     @Override
     protected IItemProvider getSeedsItem() {
-        return ItemRegister.chilipepper.get();
+        return ItemRegister.ITEM_CHILIPEPPER.get();
     }
 }

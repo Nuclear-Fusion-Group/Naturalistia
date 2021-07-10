@@ -15,6 +15,6 @@ public class Belladonna extends CropsBlock {
     @Nonnull
     @Override
     protected IItemProvider getSeedsItem() {
-        return ItemRegister.belladonna.get();
+        return ItemRegister.ITEM_BELLADONNA.get();
     }
 }

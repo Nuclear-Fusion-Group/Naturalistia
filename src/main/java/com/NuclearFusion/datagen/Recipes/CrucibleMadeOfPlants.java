@@ -16,7 +16,7 @@ public class CrucibleMadeOfPlants extends ForgeRecipeProvider {
 
     @Override
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shapedRecipe(ItemRegister.crucible_made_of_plants.get())
+        ShapedRecipeBuilder.shapedRecipe(ItemRegister.ITEM_BOTANIC_CRUCIBLE.get())
                 .patternLine(" I ")
                 .patternLine("SGS")
                 .patternLine("ISI")

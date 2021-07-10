@@ -6,7 +6,7 @@ public class BlockLootTable extends BaseBlockLootTables {
 
     @Override
     protected void addTables() {
-        skip(BlockRegistry.botanicCrucible.get());
+        skip(BlockRegistry.BLOCK_BOTANIC_CRUCIBLE.get());
         dropSelfWithContents(BlockRegistry.getBlocks());
     }
 }

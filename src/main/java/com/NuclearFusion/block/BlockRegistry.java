@@ -18,11 +18,12 @@ import java.util.ArrayList;
 public class BlockRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Naturalistia.MOD_ID);
 
-    public static final RegistryObject<Block> botanicCrucible = BLOCKS.register("botanic_crucible", BlockBotanicCrucible::new);
-    public static final RegistryObject<Block> belladonna = BLOCKS.register("belladonna", Belladonna::new);
-    public static final RegistryObject<Block> chilipepper = BLOCKS.register("chilipepper", Chilipepper::new);
-    public static final RegistryObject<Block> datura = BLOCKS.register("datura", Datura::new);
-    public static final RegistryObject<Block> skyfaery = BLOCKS.register("skyfaery", Skyfaery::new);
+    public static final RegistryObject<Block> BLOCK_BOTANIC_CRUCIBLE = BLOCKS.register("botanic_crucible", BlockBotanicCrucible::new);
+    public static final RegistryObject<Block> BLOCK_BOTANIC_ALTAR = BLOCKS.register("botanic_altar", BlockBotanicAltar::new);
+    public static final RegistryObject<Block> BLOCK_BELLADONNA = BLOCKS.register("belladonna", Belladonna::new);
+    public static final RegistryObject<Block> BLOCK_CHILIPEPPER = BLOCKS.register("chilipepper", Chilipepper::new);
+    public static final RegistryObject<Block> BLOCK_DATURA = BLOCKS.register("datura", Datura::new);
+    public static final RegistryObject<Block> BLOCK_SKYFAERY = BLOCKS.register("skyfaery", Skyfaery::new);
 
     public static ArrayList<RegistryObject<Block>> getBlocks() {
         return new ArrayList<>(BLOCKS.getEntries());

@@ -12,6 +12,6 @@ public class Datura extends CropsBlock {
 
     @Override
     protected IItemProvider getSeedsItem() {
-        return ItemRegister.datura.get();
+        return ItemRegister.ITEM_DATURA.get();
     }
 }

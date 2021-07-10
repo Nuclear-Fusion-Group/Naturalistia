@@ -13,6 +13,6 @@ public class Skyfaery extends CropsBlock {
 
     @Override
     protected IItemProvider getSeedsItem() {
-        return ItemRegister.skyfaery.get();
+        return ItemRegister.ITEM_SKYFAERY.get();
     }
 }
