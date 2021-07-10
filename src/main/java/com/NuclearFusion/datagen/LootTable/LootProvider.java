@@ -2,7 +2,7 @@ package com.NuclearFusion.datagen.LootTable;
 
 import com.NuclearFusion.datagen.LootTable.Block.BaseBlockLootTables;
 import com.NuclearFusion.datagen.LootTable.Block.BlockLootTable;
-import com.NuclearFusion.naturalistia;
+import com.NuclearFusion.Naturalistia;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.ValidationTracker;
@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class LootProvider extends BaseLootProvider {
     public LootProvider(DataGenerator gen) {
-        super(gen, naturalistia.MOD_ID);
+        super(gen, Naturalistia.MOD_ID);
     }
 
     @Override

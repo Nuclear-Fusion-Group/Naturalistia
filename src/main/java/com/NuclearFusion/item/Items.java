@@ -1,7 +1,7 @@
 package com.NuclearFusion.item;
 
 import com.NuclearFusion.block.Blocks;
-import com.NuclearFusion.naturalistia;
+import com.NuclearFusion.Naturalistia;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -14,7 +14,7 @@ import javax.annotation.Nonnull;
 
 public class Items {
     //ÎïÆ·×¢²á
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, naturalistia.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Naturalistia.MOD_ID);
 
     public static final RegistryObject<Item> crucible_made_of_plants = ITEMS.register("crucible_made_of_plants", () -> new BlockItem(Blocks.crucible_made_of_plants.get(), defaultBuilder()));
 
@@ -24,7 +24,7 @@ public class Items {
     public static final RegistryObject<Item> skyfaery = ITEMS.register("skyfaery", () -> new BlockItem(Blocks.skyfaery.get(), defaultBuilder()));
 
     //±êÇ©Ò³
-    public static ItemGroup creativeTab = new ItemGroup(naturalistia.MOD_ID) {
+    public static ItemGroup creativeTab = new ItemGroup(Naturalistia.MOD_ID) {
         @Nonnull
         @Override
         public ItemStack createIcon() {
