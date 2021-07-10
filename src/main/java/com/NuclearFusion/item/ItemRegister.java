@@ -16,7 +16,7 @@ public class ItemRegister {
     //��Ʒע��
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Naturalistia.MOD_ID);
 
-    public static final RegistryObject<Item> crucible_made_of_plants = ITEMS.register("crucible_made_of_plants", () -> new BlockItem(BlockRegistry.crucible_made_of_plants.get(), defaultBuilder()));
+    public static final RegistryObject<Item> crucible_made_of_plants = ITEMS.register("crucible_made_of_plants", () -> new BlockItem(BlockRegistry.botanicCrucible.get(), defaultBuilder()));
 
     public static final RegistryObject<Item> belladonna = ITEMS.register("belladonna", () -> new BlockItem(BlockRegistry.belladonna.get(), defaultBuilder()));
     public static final RegistryObject<Item> chilipepper = ITEMS.register("chilipepper", () -> new BlockItem(BlockRegistry.chilipepper.get(), defaultBuilder()));

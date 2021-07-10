@@ -1,7 +1,7 @@
 package com.NuclearFusion.block;
 
 import com.NuclearFusion.api.TileEntityProvider;
-import com.NuclearFusion.block.tileentity.TileEntityCrucibleMadeOfPlants;
+import com.NuclearFusion.block.tileentity.TileEntityBotanicCrucible;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.tileentity.TileEntity;
@@ -10,14 +10,14 @@ import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
 
-public class BlockCrucibleMadeOfPlants extends Block implements TileEntityProvider<TileEntity> {
-    public BlockCrucibleMadeOfPlants() {
+public class BlockBotanicCrucible extends Block implements TileEntityProvider<TileEntity> {
+    public BlockBotanicCrucible() {
         super(BlockRegistry.defaultBuilder());
     }
 
     @Override
     public TileEntityType<?> getTileType() {
-        return new TileEntityCrucibleMadeOfPlants().getType();
+        return new TileEntityBotanicCrucible().getType();
     }
 
     @Override
@@ -28,6 +28,6 @@ public class BlockCrucibleMadeOfPlants extends Block implements TileEntityProvid
     @Nullable
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return new TileEntityCrucibleMadeOfPlants();
+        return new TileEntityBotanicCrucible();
     }
 }

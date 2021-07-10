@@ -1,6 +1,7 @@
 package com.NuclearFusion;
 
 import com.NuclearFusion.block.BlockRegistry;
+import com.NuclearFusion.block.tileentity.TileEntityRegistry;
 import com.NuclearFusion.item.ItemRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -43,7 +44,7 @@ public class Naturalistia {
         BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         //��Ʒע��
         ItemRegister.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        TileEntityRegister.TILE_ENTITY.register(FMLJavaModLoadingContext.get().getModEventBus());
+        TileEntityRegistry.TILE_ENTITY_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event) {

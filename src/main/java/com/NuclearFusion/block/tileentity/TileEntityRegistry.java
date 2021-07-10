@@ -8,7 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class TileEntityRegistry {
-    public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Naturalistia.MOD_ID);
+    public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_REGISTRY = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Naturalistia.MOD_ID);
 
-    public static final RegistryObject<TileEntityType<TileEntityCrucibleMadeOfPlants>> crucible_made_of_plants_tile_entity = TILE_ENTITY.register("crucible_made_of_plants_tile_entity", () -> TileEntityType.Builder.create(TileEntityCrucibleMadeOfPlants::new, BlockRegistry.crucible_made_of_plants.get()).build(null));
+    public static final RegistryObject<TileEntityType<TileEntityBotanicCrucible>> TILE_ENTITY_BOTANIC_CRUCIBLE = TILE_ENTITY_REGISTRY.register("crucible_made_of_plants_tile_entity", () -> TileEntityType.Builder.create(TileEntityBotanicCrucible::new, BlockRegistry.botanicCrucible.get()).build(null));
 }

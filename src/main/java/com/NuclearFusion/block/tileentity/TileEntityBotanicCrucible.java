@@ -5,10 +5,10 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityCrucibleMadeOfPlants extends TileEntity implements ITickableTileEntity {
+public class TileEntityBotanicCrucible extends TileEntity implements ITickableTileEntity {
 
-    public TileEntityCrucibleMadeOfPlants() {
-        super(TileEntityRegistry.crucible_made_of_plants_tile_entity.get());
+    public TileEntityBotanicCrucible() {
+        super(TileEntityRegistry.TILE_ENTITY_BOTANIC_CRUCIBLE.get());
     }
 
     @Override
