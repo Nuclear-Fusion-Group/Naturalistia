@@ -1,6 +1,6 @@
 package com.NuclearFusion.datagen.LootTable.Block;
 
-import com.NuclearFusion.api.IHasTileEntity;
+import com.NuclearFusion.api.TileEntityProvider;
 import com.NuclearFusion.api.NBTConstants;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.block.Block;
@@ -91,8 +91,8 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
             @Nullable
             TileEntity tile = null;
             //»ñÈ¡TileEntity
-            if (block instanceof IHasTileEntity) {
-                tile = ((IHasTileEntity) block).getTileType().create();
+            if (block instanceof TileEntityProvider) {
+                tile = ((TileEntityProvider) block).getTileType().create();
             }
             if (tile != null) {
                 if (!(tile instanceof IItemHandler) || ((IItemHandler) tile).getSlots() > 0) {

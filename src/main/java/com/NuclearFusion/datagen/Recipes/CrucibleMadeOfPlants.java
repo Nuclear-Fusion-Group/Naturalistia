@@ -1,6 +1,6 @@
 package com.NuclearFusion.datagen.Recipes;
 
-import com.NuclearFusion.item.Items;
+import com.NuclearFusion.item.ItemRegister;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
@@ -16,7 +16,7 @@ public class CrucibleMadeOfPlants extends ForgeRecipeProvider {
 
     @Override
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shapedRecipe(Items.crucible_made_of_plants.get())
+        ShapedRecipeBuilder.shapedRecipe(ItemRegister.crucible_made_of_plants.get())
                 .patternLine(" I ")
                 .patternLine("SGS")
                 .patternLine("ISI")

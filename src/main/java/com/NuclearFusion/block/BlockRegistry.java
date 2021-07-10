@@ -4,7 +4,7 @@ import com.NuclearFusion.block.crop.Belladonna;
 import com.NuclearFusion.block.crop.Chilipepper;
 import com.NuclearFusion.block.crop.Datura;
 import com.NuclearFusion.block.crop.Skyfaery;
-import com.NuclearFusion.naturalistia;
+import com.NuclearFusion.Naturalistia;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -15,10 +15,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 
-public class Blocks {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, naturalistia.MOD_ID);
+public class BlockRegistry {
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Naturalistia.MOD_ID);
 
-    public static final RegistryObject<Block> crucible_made_of_plants = BLOCKS.register("crucible_made_of_plants", CrucibleMadeOfPlants::new);
+    public static final RegistryObject<Block> crucible_made_of_plants = BLOCKS.register("crucible_made_of_plants", BlockCrucibleMadeOfPlants::new);
     //×÷Îï
     public static final RegistryObject<Block> belladonna = BLOCKS.register("belladonna", Belladonna::new);
     public static final RegistryObject<Block> chilipepper = BLOCKS.register("chilipepper", Chilipepper::new);

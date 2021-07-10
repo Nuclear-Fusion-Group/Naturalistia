@@ -1,7 +1,7 @@
 package com.NuclearFusion.block.crop;
 
 import com.NuclearFusion.block.Crops;
-import com.NuclearFusion.item.Items;
+import com.NuclearFusion.item.ItemRegister;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.util.IItemProvider;
 
@@ -12,6 +12,6 @@ public class Datura extends CropsBlock {
 
     @Override
     protected IItemProvider getSeedsItem() {
-        return Items.datura.get();
+        return ItemRegister.datura.get();
     }
 }

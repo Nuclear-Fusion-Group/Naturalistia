@@ -1,7 +1,7 @@
 package com.NuclearFusion.block.crop;
 
 import com.NuclearFusion.block.Crops;
-import com.NuclearFusion.item.Items;
+import com.NuclearFusion.item.ItemRegister;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.util.IItemProvider;
 
@@ -13,6 +13,6 @@ public class Chilipepper extends CropsBlock {
 
     @Override
     protected IItemProvider getSeedsItem() {
-        return Items.chilipepper.get();
+        return ItemRegister.chilipepper.get();
     }
 }

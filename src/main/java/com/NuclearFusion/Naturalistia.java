@@ -1,6 +1,7 @@
 package com.NuclearFusion;
 
-import com.NuclearFusion.item.Items;
+import com.NuclearFusion.block.BlockRegistry;
+import com.NuclearFusion.item.ItemRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -20,14 +21,14 @@ import org.apache.logging.log4j.Logger;
 import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(naturalistia.MOD_ID)
-public class naturalistia {
+@Mod(Naturalistia.MOD_ID)
+public class Naturalistia {
 
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "naturalistia";
 
-    public naturalistia() {
+    public Naturalistia() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -39,9 +40,9 @@ public class naturalistia {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         //·½¿é×¢²á
-        com.NuclearFusion.block.Blocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         //ÎïÆ·×¢²á
-        Items.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ItemRegister.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event) {
