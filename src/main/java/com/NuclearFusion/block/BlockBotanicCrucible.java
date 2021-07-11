@@ -4,14 +4,19 @@ import com.NuclearFusion.api.TileEntityProvider;
 import com.NuclearFusion.block.tileentity.TileEntityBotanicCrucible;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
@@ -47,6 +52,12 @@ public class BlockBotanicCrucible extends Block implements TileEntityProvider<Ti
     @Override
     public TileEntityType<?> getTileType() {
         return new TileEntityBotanicCrucible().getType();
+    }
+
+    @Override
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        TileEntityBotanicCrucible tileEntity = (TileEntityBotanicCrucible) worldIn.getTileEntity(pos);
+        return tileEntity.activate(state, worldIn, pos, player, handIn, hit);
     }
 
     @Override

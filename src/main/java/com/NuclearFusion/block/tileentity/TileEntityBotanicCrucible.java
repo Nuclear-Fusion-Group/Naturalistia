@@ -1,15 +1,146 @@
 package com.NuclearFusion.block.tileentity;
 
+import com.NuclearFusion.Naturalistia;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.BucketItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.TileFluidHandler;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 
-public class TileEntityBotanicCrucible extends TileEntity implements ITickableTileEntity {
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+public class TileEntityBotanicCrucible extends TileFluidHandler implements ITickableTileEntity {
+
+    public static final int CAPACITY = FluidAttributes.BUCKET_VOLUME * 8;
 
     public TileEntityBotanicCrucible() {
         super(TileEntityRegistry.TILE_ENTITY_BOTANIC_CRUCIBLE.get());
+        tank = new FluidTank(CAPACITY){
+            @Override
+            protected void onContentsChanged(){
+                markDirty();
+                getWorld().notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+            }
+
+            @Override
+            public int fill(FluidStack resource, FluidAction action) {
+                return 0;
+            }
+        };
+
+        tank.setFluid(new FluidStack(Fluids.WATER, 4000));
+
     }
+
+    public ItemStackHandler itemStackHandler = new ItemStackHandler(6){
+        @Override
+        protected void onContentsChanged(int slot){
+            BlockState state = world.getBlockState(pos);
+            getWorld().notifyBlockUpdate(pos, state, state, 3);
+            world.notifyNeighborsOfStateChange(pos, state.getBlock());
+            TileEntityBotanicCrucible.this.markDirty();
+        }
+    };
+
+    private final LazyOptional<IItemHandler> itemHolder = LazyOptional.of(() -> itemStackHandler);
+
+    public ActionResultType activate(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit){
+        ItemStack heldItem = player.getHeldItem(hand);
+
+        if(heldItem.getItem() == Items.ACACIA_DOOR){
+            if(!worldIn.isRemote) {
+                for (int i = 0; i < 6; i++) {
+                    ItemStack itemStack = this.itemStackHandler.getStackInSlot(i);
+                    Naturalistia.LOGGER.info("Slot " + i + " - ItemStack: " + itemStack.getDisplayName() + " * " + itemStack.getCount());
+                }
+            }
+            return ActionResultType.PASS;
+        }
+
+        if (heldItem != ItemStack.EMPTY) {
+
+            if ((FluidUtil.getFluidHandler(heldItem).isPresent() || heldItem.getItem() instanceof BucketItem) && !FluidUtil.getFluidContained(heldItem).isPresent()) {
+                Naturalistia.LOGGER.info(0);
+                boolean didFill = FluidUtil.interactWithFluidHandler(player, hand, this.tank);
+                if (didFill) {
+                    return ActionResultType.SUCCESS;
+                }
+            } else {
+
+                Naturalistia.LOGGER.info(1);
+
+                for (int i = 0; i < 6; i++) {
+                    ItemStack copy = heldItem.copy();
+                    if(!worldIn.isRemote)
+                        Naturalistia.LOGGER.info("Slot "+i+" - ItemStack: "+heldItem.getDisplayName()+" * "+heldItem.getCount());
+
+                    ItemStack leftOver = this.itemStackHandler.insertItem(i, heldItem, false);
+                    player.setHeldItem(hand, leftOver);
+
+                    if(!worldIn.isRemote)
+                        Naturalistia.LOGGER.info("Slot "+i+" - ItemStack: "+leftOver.getDisplayName()+" * "+leftOver.getCount());
+
+                    if (!(copy.getCount()==leftOver.getCount() & copy.getItem()==leftOver.getItem())) return ActionResultType.SUCCESS;
+                }
+            }
+            Naturalistia.LOGGER.info(2);
+        }
+
+        Naturalistia.LOGGER.info(3);
+
+        for(int i = 5; i >= 0; i--){
+            if(!this.itemStackHandler.getStackInSlot(i).isEmpty()){
+
+                Naturalistia.LOGGER.info(4);
+
+                if (heldItem == ItemStack.EMPTY) {
+
+                    Naturalistia.LOGGER.info(5);
+
+                    player.setHeldItem(hand, itemStackHandler.extractItem(i, itemStackHandler.getStackInSlot(i).getCount(), false));
+                    return ActionResultType.SUCCESS;
+                } else {
+
+                    Naturalistia.LOGGER.info(6);
+
+                    if(!worldIn.isRemote) {
+
+                        Naturalistia.LOGGER.info(7);
+
+                        world.addEntity(new ItemEntity(world, player.getPosX(), player.getPosY(), player.getPosZ(), itemStackHandler.getStackInSlot(i)));
+                        itemStackHandler.setStackInSlot(i, ItemStack.EMPTY);
+                        return ActionResultType.SUCCESS;
+                    }
+                }
+            }
+        }
+
+        return ActionResultType.FAIL;
+    }
+
 
     @Override
     public void tick() {
@@ -19,12 +150,22 @@ public class TileEntityBotanicCrucible extends TileEntity implements ITickableTi
     @Override
     public void read(BlockState state, CompoundNBT nbt) {
         super.read(state, nbt);
+        itemStackHandler.deserializeNBT(nbt.getCompound("items"));
     }
 
     @Override
     public CompoundNBT write(CompoundNBT compound) {
+        CompoundNBT nbt = super.write(compound);
+        nbt.put("items", itemStackHandler.serializeNBT());
+        return nbt;
+    }
 
-
-        return super.write(compound);
+    @Override
+    @Nonnull
+    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> capability, @Nullable Direction facing)
+    {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+            return itemHolder.cast();
+        return super.getCapability(capability, facing);
     }
 }

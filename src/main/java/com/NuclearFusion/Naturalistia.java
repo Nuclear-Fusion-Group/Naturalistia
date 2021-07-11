@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 public class Naturalistia {
 
     // Directly reference a log4j logger.
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "naturalistia";
 
     public Naturalistia() {
