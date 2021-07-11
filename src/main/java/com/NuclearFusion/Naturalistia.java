@@ -2,12 +2,16 @@ package com.NuclearFusion;
 
 import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.block.tileentity.TileEntityRegistry;
+import com.NuclearFusion.client.ClientProxy;
+import com.NuclearFusion.client.handler.HUDHandler;
 import com.NuclearFusion.item.ItemRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -29,7 +33,12 @@ public class Naturalistia {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "naturalistia";
 
+    public static IProxy proxy = new IProxy();
+
     public Naturalistia() {
+
+        DistExecutor.unsafeCallWhenOn(Dist.CLIENT, () -> () -> proxy = new ClientProxy());
+
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -40,6 +49,8 @@ public class Naturalistia {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
+        MinecraftForge.EVENT_BUS.addListener(HUDHandler::onDrawScreenPost);
         //����ע��
         BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         //��Ʒע��
@@ -56,6 +67,7 @@ public class Naturalistia {
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

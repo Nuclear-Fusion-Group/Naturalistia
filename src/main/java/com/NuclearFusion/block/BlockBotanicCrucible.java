@@ -4,6 +4,8 @@ import com.NuclearFusion.api.TileEntityProvider;
 import com.NuclearFusion.block.tileentity.TileEntityBotanicCrucible;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
@@ -69,5 +71,13 @@ public class BlockBotanicCrucible extends Block implements TileEntityProvider<Ti
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
         return new TileEntityBotanicCrucible();
+    }
+
+    @Override
+    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+        if (entity instanceof ItemEntity) {
+            TileEntityBotanicCrucible tile = (TileEntityBotanicCrucible) world.getTileEntity(pos);
+            tile.collideWithItemEntity((ItemEntity) entity);
+        }
     }
 }

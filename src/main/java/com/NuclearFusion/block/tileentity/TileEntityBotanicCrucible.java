@@ -1,7 +1,12 @@
 package com.NuclearFusion.block.tileentity;
 
 import com.NuclearFusion.Naturalistia;
+import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
@@ -15,6 +20,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -32,6 +39,9 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+/**
+ * Part of the codes are written by Vazkii, in Botania repository on GitHub.
+ */
 public class TileEntityBotanicCrucible extends TileFluidHandler implements ITickableTileEntity {
 
     public static final int CAPACITY = FluidAttributes.BUCKET_VOLUME * 8;
@@ -64,6 +74,28 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
             TileEntityBotanicCrucible.this.markDirty();
         }
     };
+
+    public boolean collideWithItemEntity(ItemEntity itemEntity){
+        ItemStack stack = itemEntity.getItem();
+        if (stack.isEmpty() || !itemEntity.isAlive()) {
+            return false;
+        }
+
+        for (int i = 0; i < 6; i++) {
+            if(itemStackHandler.getStackInSlot(i)==ItemStack.EMPTY){
+                itemStackHandler.setStackInSlot(i, stack);
+                world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.BLOCKS, 0.1F, 10F);
+                itemEntity.remove();
+                BlockState state = world.getBlockState(pos);
+                getWorld().notifyBlockUpdate(pos, state, state, 3);
+                world.notifyNeighborsOfStateChange(pos, state.getBlock());
+                TileEntityBotanicCrucible.this.markDirty();
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     private final LazyOptional<IItemHandler> itemHolder = LazyOptional.of(() -> itemStackHandler);
 
@@ -168,4 +200,66 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
             return itemHolder.cast();
         return super.getCapability(capability, facing);
     }
+
+
+
+    public void renderHUD(Minecraft mc, MatrixStack ms){
+        int xc = mc.getMainWindow().getScaledWidth() / 2;
+        int yc = mc.getMainWindow().getScaledHeight() / 2;
+
+        float angle = -90;
+        int radius = 24;
+        int amt = 0;
+        for (int i = 0; i < 6; i++) {
+            if (itemStackHandler.getStackInSlot(i).isEmpty()) {
+                break;
+            }
+            amt++;
+        }
+
+        if (amt > 0) {
+            float anglePer = 360F / amt;
+
+            /**
+            world.getRecipeManager().getRecipe(ModRecipeTypes.RUNE_TYPE, getItemHandler(), world).ifPresent(recipe -> {
+                RenderSystem.enableBlend();
+                RenderSystem.enableRescaleNormal();
+                RenderSystem.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+
+                float progress = (float) mana / (float) manaToGet;
+
+                mc.textureManager.bindTexture(HUDHandler.manaBar);
+                RenderSystem.color4f(1F, 1F, 1F, 1F);
+                RenderHelper.drawTexturedModalRect(ms, xc + radius + 9, yc - 8, progress == 1F ? 0 : 22, 8, 22, 15);
+
+                if (progress == 1F) {
+                    mc.getItemRenderer().renderItemIntoGUI(new ItemStack(ModBlocks.livingrock), xc + radius + 16, yc + 8);
+                    // change to MatrixStack ops when renderItemIntoGUI starts taking MatrixStack
+                    RenderSystem.translated(0, 0, 100);
+                    mc.getItemRenderer().renderItemIntoGUI(new ItemStack(ModItems.twigWand), xc + radius + 24, yc + 8);
+                    RenderSystem.translated(0, 0, -100);
+                }
+
+                RenderHelper.renderProgressPie(ms, xc + radius + 32, yc - 8, progress, recipe.getCraftingResult(getItemHandler()));
+
+                if (progress == 1F) {
+                    mc.fontRenderer.drawString(ms, "+", xc + radius + 14, yc + 12, 0xFFFFFF);
+                }
+            });
+            */
+
+            for (int i = 0; i < amt; i++) {
+                double xPos = xc + Math.cos(angle * Math.PI / 180D) * radius - 8;
+                double yPos = yc + Math.sin(angle * Math.PI / 180D) * radius - 8;
+                // change to MatrixStack ops when renderItemIntoGUI starts taking MatrixStack
+                RenderSystem.translated(xPos, yPos, 0);
+                mc.fontRenderer.drawText(ms, new StringTextComponent(String.valueOf(itemStackHandler.getStackInSlot(i).getCount())), 8+16, 6+16, 0xFFFFFF);
+                mc.getItemRenderer().renderItemIntoGUI(itemStackHandler.getStackInSlot(i), 0, 0);
+                RenderSystem.translated(-xPos, -yPos, 0);
+
+                angle += anglePer;
+            }
+        }
+    }
+
 }

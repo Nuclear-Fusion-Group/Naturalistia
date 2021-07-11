@@ -5,6 +5,8 @@ import com.NuclearFusion.block.tileentity.TileEntityBotanicAltar;
 import com.NuclearFusion.block.tileentity.TileEntityBotanicCrucible;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
@@ -13,6 +15,7 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
@@ -48,4 +51,5 @@ public class BlockBotanicAltar extends Block implements TileEntityProvider<TileE
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
         return new TileEntityBotanicAltar();
     }
+
 }
