@@ -44,7 +44,7 @@ public class BlockBotanicCrucible extends Block implements TileEntityProvider<Ti
 
 
     public BlockBotanicCrucible() {
-        super(Properties.create(Material.ROCK));
+        super(BlockRegistry.defaultBuilder());
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {

@@ -34,8 +34,9 @@ public class BlockRegistry {
     }
 
     public static AbstractBlock.Properties defaultBuilder() {
-        return AbstractBlock.Properties.create(Material.STRUCTURE_VOID)
+        return AbstractBlock.Properties.create(Material.ROCK)
+                .setRequiresTool()
                 .harvestTool(ToolType.PICKAXE)
-                .hardnessAndResistance(3F);
+                .hardnessAndResistance(3.0F);
     }
 }
