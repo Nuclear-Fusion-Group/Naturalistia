@@ -1,81 +1,52 @@
 package com.NuclearFusion.recipe.crucible;
 
-import com.google.gson.JsonObject;
-import net.minecraft.inventory.IInventory;
+import com.NuclearFusion.Naturalistia;
+import com.NuclearFusion.recipe.IRecipeManager;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraftforge.registries.ForgeRegistryEntry;
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraftforge.fluids.FluidStack;
+import slimeknights.mantle.util.ItemStackList;
 
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.List;
 
-public class CrucibleRecipe implements IRecipe<IInventory> {
-    public CrucibleRecipe(ResourceLocation recipeId) {
+public class CrucibleRecipe {
 
-    }
+    ResourceLocation recipeId;
 
-    @Override
-    public boolean matches(IInventory inv, World worldIn) {
-        return false;
-    }
+    ItemStackList itemInputs = ItemStackList.withSize(6);
 
-    @Override
-    public ItemStack getCraftingResult(IInventory inv) {
-        return null;
-    }
+    FluidStack inputFluid;
 
-    @Override
-    public boolean canFit(int width, int height) {
-        return false;
-    }
+    FluidStack outputFluid;
 
-    @Override
-    public ItemStack getRecipeOutput() {
-        return null;
-    }
+    int timeTaken;
 
-    @Override
-    public ResourceLocation getId() {
-        return null;
-    }
-
-    @Override
-    public IRecipeSerializer<?> getSerializer() {
-        return null;
-    }
-
-    @Override
-    public IRecipeType<?> getType() {
-        return null;
-    }
-
-    public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<CrucibleRecipe> {
-
-        @Override
-        public CrucibleRecipe read(ResourceLocation recipeId, JsonObject json) {
-            return null;
+    public CrucibleRecipe(String recipeId, int time, FluidStack inputFluid, FluidStack outputFluid, ItemStack... inputs) {
+        int i = 0;
+        for (ItemStack itemStack:inputs){
+            itemInputs.set(i++, itemStack);
         }
+        this.inputFluid = inputFluid;
+        this.outputFluid = outputFluid;
+        this.recipeId = new ResourceLocation(Naturalistia.MOD_ID, recipeId);
+        this.timeTaken = time;
+    }
 
-        @Nullable
-        @Override
-        public CrucibleRecipe read(ResourceLocation recipeId, PacketBuffer buffer) {
-            buffer.readCompoundTag();
-            return null;
-        }
+    /**
+     * @param inputFluid The input fluids
+     * @param inputs The input items in crucible
+     * @return The output fluid that the whole bunch of stuffs in the crucible tends to; returns null if no corresponding recipe is found.
+     * todo: 配方能够在有整数倍的原料的情况下大批量制作液体
+     */
+    public static CrucibleRecipe getRecipe(FluidStack inputFluid, List<ItemStack> inputs){
 
-        @Override
-        public void write(PacketBuffer buffer, CrucibleRecipe recipe) {
-
-
-
-            buffer.writeCompoundTag(new CompoundNBT());
-
+        for(CrucibleRecipe recipe : IRecipeManager.crucibleRecipes){
+            if(recipe.inputFluid == inputFluid){
+                if(recipe.itemInputs.containsAll(inputs) & inputs.containsAll(recipe.itemInputs)){
+                    return recipe;
+                };
+            }
         }
     }
 }

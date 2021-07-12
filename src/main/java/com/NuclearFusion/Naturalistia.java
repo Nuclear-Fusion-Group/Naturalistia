@@ -6,6 +6,7 @@ import com.NuclearFusion.client.handler.HUDHandler;
 import com.NuclearFusion.client.renderer.TileBotanicCrucibleRenderer;
 import com.NuclearFusion.item.ItemRegister;
 import com.NuclearFusion.world.Ore;
+import com.NuclearFusion.recipe.IRecipeManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
@@ -40,6 +41,8 @@ public class Naturalistia {
 
 
     public Naturalistia() {
+
+        new IRecipeManager();
 
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
