@@ -15,6 +15,8 @@ import net.minecraft.item.BucketItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
@@ -104,10 +106,11 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
 
         if(heldItem.getItem() == Items.ACACIA_DOOR){
             if(!worldIn.isRemote) {
-                for (int i = 0; i < 6; i++) {
-                    ItemStack itemStack = this.itemStackHandler.getStackInSlot(i);
-                    Naturalistia.LOGGER.info("Slot " + i + " - ItemStack: " + itemStack.getDisplayName() + " * " + itemStack.getCount());
-                }
+                Naturalistia.LOGGER.info("Server Side: ");
+            }
+            for (int i = 0; i < 6; i++) {
+                ItemStack itemStack = this.itemStackHandler.getStackInSlot(i);
+                Naturalistia.LOGGER.info("Slot " + i + " - ItemStack: " + itemStack.getDisplayName() + " * " + itemStack.getCount());
             }
             return ActionResultType.PASS;
         }
@@ -176,13 +179,14 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
 
     @Override
     public void tick() {
-
     }
 
     @Override
     public void read(BlockState state, CompoundNBT nbt) {
         super.read(state, nbt);
         itemStackHandler.deserializeNBT(nbt.getCompound("items"));
+
+
     }
 
     @Override
@@ -190,6 +194,19 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
         CompoundNBT nbt = super.write(compound);
         nbt.put("items", itemStackHandler.serializeNBT());
         return nbt;
+    }
+
+    @Override
+    public final SUpdateTileEntityPacket getUpdatePacket() {
+        CompoundNBT tag = new CompoundNBT();
+        write(tag);
+        return new SUpdateTileEntityPacket(pos, -999, tag);
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket packet) {
+        super.onDataPacket(net, packet);
+        read(getBlockState() ,packet.getNbtCompound());
     }
 
     @Override
@@ -253,7 +270,7 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
                 double yPos = yc + Math.sin(angle * Math.PI / 180D) * radius - 8;
                 // change to MatrixStack ops when renderItemIntoGUI starts taking MatrixStack
                 RenderSystem.translated(xPos, yPos, 0);
-                mc.fontRenderer.drawText(ms, new StringTextComponent(String.valueOf(itemStackHandler.getStackInSlot(i).getCount())), 8+16, 6+16, 0xFFFFFF);
+                mc.fontRenderer.drawText(ms, new StringTextComponent(String.valueOf(itemStackHandler.getStackInSlot(i).getCount())), 8+8, 6+8, 0xFFFFFF);
                 mc.getItemRenderer().renderItemIntoGUI(itemStackHandler.getStackInSlot(i), 0, 0);
                 RenderSystem.translated(-xPos, -yPos, 0);
 
