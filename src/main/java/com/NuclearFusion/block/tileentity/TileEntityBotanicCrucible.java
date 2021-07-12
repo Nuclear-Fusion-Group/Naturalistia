@@ -5,11 +5,8 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.ItemStack;
@@ -18,21 +15,16 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.TileFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -47,20 +39,15 @@ import javax.annotation.Nullable;
  */
 public class TileEntityBotanicCrucible extends TileFluidHandler implements ITickableTileEntity {
 
-    public static final int CAPACITY = FluidAttributes.BUCKET_VOLUME * 8;
+    public static final int CAPACITY = FluidAttributes.BUCKET_VOLUME * 4;
 
     public TileEntityBotanicCrucible() {
-        super(TileEntityRegistry.TILE_ENTITY_BOTANIC_CRUCIBLE.get());
+        super(TileEntityRegistry.REGISTRY_OBJECT_TILE_ENTITY_BOTANIC_CRUCIBLE.get());
         tank = new FluidTank(CAPACITY){
             @Override
             protected void onContentsChanged(){
                 markDirty();
                 getWorld().notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
-            }
-
-            @Override
-            public int fill(FluidStack resource, FluidAction action) {
-                return 0;
             }
         };
     }
@@ -115,7 +102,7 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
 
         if (heldItem != ItemStack.EMPTY) {
 
-            if ((FluidUtil.getFluidHandler(heldItem).isPresent() || heldItem.getItem() instanceof BucketItem) && !FluidUtil.getFluidContained(heldItem).isPresent()) {
+            if ((FluidUtil.getFluidHandler(heldItem).isPresent() || heldItem.getItem() instanceof BucketItem)) {
                 Naturalistia.LOGGER.info(0);
                 boolean didFill = FluidUtil.interactWithFluidHandler(player, hand, this.tank);
                 if (didFill) {
@@ -210,6 +197,12 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
         super.onDataPacket(net, packet);
         read(getBlockState() ,packet.getNbtCompound());
     }
+
+    @Override
+    public CompoundNBT getUpdateTag() {
+        return write(new CompoundNBT()); // 记得写要同步的数据进去
+    }
+
 
     @Override
     @Nonnull

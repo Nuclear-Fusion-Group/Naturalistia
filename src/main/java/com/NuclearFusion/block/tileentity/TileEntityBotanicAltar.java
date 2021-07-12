@@ -8,7 +8,7 @@ import net.minecraft.tileentity.TileEntity;
 public class TileEntityBotanicAltar extends TileEntity implements ITickableTileEntity {
 
     public TileEntityBotanicAltar() {
-        super(TileEntityRegistry.TILE_ENTITY_BOTANIC_CRUCIBLE.get());
+        super(TileEntityRegistry.REGISTRY_OBJECT_TILE_ENTITY_BOTANIC_CRUCIBLE.get());
     }
 
     @Override

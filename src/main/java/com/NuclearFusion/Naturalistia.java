@@ -2,17 +2,16 @@ package com.NuclearFusion;
 
 import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.block.tileentity.TileEntityRegistry;
-import com.NuclearFusion.client.ClientProxy;
 import com.NuclearFusion.client.handler.HUDHandler;
+import com.NuclearFusion.client.renderer.TileBotanicCrucibleRenderer;
 import com.NuclearFusion.item.ItemRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -25,6 +24,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.stream.Collectors;
 
+import static com.NuclearFusion.block.tileentity.TileEntityRegistry.REGISTRY_OBJECT_TILE_ENTITY_BOTANIC_CRUCIBLE;
+
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Naturalistia.MOD_ID)
 public class Naturalistia {
@@ -33,11 +34,8 @@ public class Naturalistia {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "naturalistia";
 
-    public static IProxy proxy = new IProxy();
 
     public Naturalistia() {
-
-        DistExecutor.unsafeCallWhenOn(Dist.CLIENT, () -> () -> proxy = new ClientProxy());
 
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
@@ -68,6 +66,7 @@ public class Naturalistia {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
 
+        ClientRegistry.bindTileEntityRenderer(REGISTRY_OBJECT_TILE_ENTITY_BOTANIC_CRUCIBLE.get(), TileBotanicCrucibleRenderer::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
