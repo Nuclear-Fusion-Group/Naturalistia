@@ -1,13 +1,14 @@
 package com.NuclearFusion.block.tileentity;
 
 import com.NuclearFusion.Naturalistia;
+import com.NuclearFusion.recipe.crucible.CrucibleRecipe;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -23,13 +24,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidAttributes;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.TileFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import slimeknights.mantle.util.ItemStackList;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -41,26 +42,34 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
 
     public static final int CAPACITY = FluidAttributes.BUCKET_VOLUME * 4;
 
-    public TileEntityBotanicCrucible() {
-        super(TileEntityRegistry.REGISTRY_OBJECT_TILE_ENTITY_BOTANIC_CRUCIBLE.get());
-        tank = new FluidTank(CAPACITY){
-            @Override
-            protected void onContentsChanged(){
-                markDirty();
-                getWorld().notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
-            }
-        };
-    }
+    private int progress;
+    private boolean needRecheckRecipe;
+    private CrucibleRecipe onGoingRecipe;
+    private CrucibleRecipe prevRecipe;
 
     public ItemStackHandler itemStackHandler = new ItemStackHandler(6){
         @Override
         protected void onContentsChanged(int slot){
+            needRecheckRecipe = true;
             BlockState state = world.getBlockState(pos);
             getWorld().notifyBlockUpdate(pos, state, state, 3);
             world.notifyNeighborsOfStateChange(pos, state.getBlock());
             TileEntityBotanicCrucible.this.markDirty();
         }
     };
+
+    public TileEntityBotanicCrucible() {
+        super(TileEntityRegistry.REGISTRY_OBJECT_TILE_ENTITY_BOTANIC_CRUCIBLE.get());
+        tank = new FluidTank(CAPACITY){
+            @Override
+            protected void onContentsChanged(){
+                needRecheckRecipe = true;
+                markDirty();
+                getWorld().notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+            }
+        };
+    }
+
 
     public boolean collideWithItemEntity(ItemEntity itemEntity){
         ItemStack stack = itemEntity.getItem();
@@ -90,12 +99,8 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
         ItemStack heldItem = player.getHeldItem(hand);
 
         if(heldItem.getItem() == Items.ACACIA_DOOR){
-            if(!worldIn.isRemote) {
-                Naturalistia.LOGGER.info("Server Side: ");
-            }
             for (int i = 0; i < 6; i++) {
                 ItemStack itemStack = this.itemStackHandler.getStackInSlot(i);
-                Naturalistia.LOGGER.info("Slot " + i + " - ItemStack: " + itemStack.getDisplayName() + " * " + itemStack.getCount());
             }
             return ActionResultType.PASS;
         }
@@ -103,7 +108,6 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
         if (heldItem != ItemStack.EMPTY) {
 
             if ((FluidUtil.getFluidHandler(heldItem).isPresent() || heldItem.getItem() instanceof BucketItem)) {
-                Naturalistia.LOGGER.info(0);
                 boolean didFill = FluidUtil.interactWithFluidHandler(player, hand, this.tank);
                 if (didFill) {
                     return ActionResultType.SUCCESS;
@@ -114,42 +118,20 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
 
                 for (int i = 0; i < 6; i++) {
                     ItemStack copy = heldItem.copy();
-                    if(!worldIn.isRemote)
-                        Naturalistia.LOGGER.info("Slot "+i+" - ItemStack: "+heldItem.getDisplayName()+" * "+heldItem.getCount());
-
                     ItemStack leftOver = this.itemStackHandler.insertItem(i, heldItem, false);
                     player.setHeldItem(hand, leftOver);
-
-                    if(!worldIn.isRemote)
-                        Naturalistia.LOGGER.info("Slot "+i+" - ItemStack: "+leftOver.getDisplayName()+" * "+leftOver.getCount());
-
                     if (!(copy.getCount()==leftOver.getCount() & copy.getItem()==leftOver.getItem())) return ActionResultType.SUCCESS;
                 }
             }
-            Naturalistia.LOGGER.info(2);
         }
-
-        Naturalistia.LOGGER.info(3);
 
         for(int i = 5; i >= 0; i--){
             if(!this.itemStackHandler.getStackInSlot(i).isEmpty()){
-
-                Naturalistia.LOGGER.info(4);
-
                 if (heldItem == ItemStack.EMPTY) {
-
-                    Naturalistia.LOGGER.info(5);
-
                     player.setHeldItem(hand, itemStackHandler.extractItem(i, itemStackHandler.getStackInSlot(i).getCount(), false));
                     return ActionResultType.SUCCESS;
                 } else {
-
-                    Naturalistia.LOGGER.info(6);
-
                     if(!worldIn.isRemote) {
-
-                        Naturalistia.LOGGER.info(7);
-
                         world.addEntity(new ItemEntity(world, player.getPosX(), player.getPosY(), player.getPosZ(), itemStackHandler.getStackInSlot(i)));
                         itemStackHandler.setStackInSlot(i, ItemStack.EMPTY);
                         return ActionResultType.SUCCESS;
@@ -161,10 +143,72 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
         return ActionResultType.FAIL;
     }
 
+    private boolean onLit(){
+        BlockPos pos = this.getPos();
+        BlockState state = getWorld().getBlockState(pos.down(1));
+        return state.getBlock() instanceof AbstractFireBlock;
+    }
 
     @Override
     public void tick() {
         if(!getWorld().isRemote) {
+
+            if(needRecheckRecipe){
+
+                Naturalistia.LOGGER.info("1");
+
+                ItemStackList list = ItemStackList.withSize(6);
+                for (int i = 0; i < 6; i++) {
+                    if(itemStackHandler.getStackInSlot(i)!=ItemStack.EMPTY){
+                        list.set(i, itemStackHandler.getStackInSlot(i));
+                    } else {
+                        break;
+                    }
+                }
+                onGoingRecipe = CrucibleRecipe.getRecipe(tank.getFluid(), list);
+
+                if(onGoingRecipe != prevRecipe){
+
+                    Naturalistia.LOGGER.info("2");
+
+                    progress = 0;
+                    if(onGoingRecipe != null){
+                        prevRecipe = onGoingRecipe;
+                    }
+                }
+
+                needRecheckRecipe = false;
+
+            } else {
+                if(onGoingRecipe!=null){
+
+                    Naturalistia.LOGGER.info("3");
+
+                    if(progress == onGoingRecipe.timeTaken){
+
+                        if(tank.getFluid().getFluid() == onGoingRecipe.outputFluid.getFluid()){
+
+                            if(tank.getFluid().getAmount() + onGoingRecipe.outputFluid.getAmount() > tank.getCapacity()){
+                                progress = 0;
+                            } else {
+                                tank.getFluid().setAmount(tank.getFluid().getAmount() + onGoingRecipe.outputFluid.getAmount());
+                                for (int i = 0; i < 6; i++) {
+                                    itemStackHandler.extractItem(i, 64, false);
+                                }
+                            }
+                        } else if(tank.isEmpty()){
+                            tank.setFluid(tank.getFluid());
+                        }
+                    }
+                    if(onLit()){
+                        progress++;
+                        Naturalistia.LOGGER.info(progress);
+                    }
+                }
+            }
+
+            if(!onLit() & progress>0) progress--;
+
             BlockState state = world.getBlockState(pos);
             getWorld().notifyBlockUpdate(pos, state, state, 3);
         }

@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 public class IRecipeManager {
 
-    public static ArrayList<CrucibleRecipe> crucibleRecipes;
+    public static ArrayList<CrucibleRecipe> crucibleRecipes = new ArrayList<>();
 
     public IRecipeManager(){
         crucibleRecipes.add(new CrucibleRecipe(
                 "test_recipe",
                 100,
-                null,
+                FluidStack.EMPTY,
                 new FluidStack(Fluids.WATER, 1000),
                 new ItemStack(Items.PUMPKIN, 2),
                 new ItemStack(Items.BEETROOT)));

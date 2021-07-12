@@ -12,15 +12,15 @@ import java.util.List;
 
 public class CrucibleRecipe {
 
-    ResourceLocation recipeId;
+    public ResourceLocation recipeId;
 
-    ItemStackList itemInputs = ItemStackList.withSize(6);
+    public ItemStackList itemInputs = ItemStackList.withSize(6);
 
-    FluidStack inputFluid;
+    public FluidStack inputFluid;
 
-    FluidStack outputFluid;
+    public FluidStack outputFluid;
 
-    int timeTaken;
+    public int timeTaken;
 
     public CrucibleRecipe(String recipeId, int time, FluidStack inputFluid, FluidStack outputFluid, ItemStack... inputs) {
         int i = 0;
@@ -40,12 +40,12 @@ public class CrucibleRecipe {
      * todo: 配方能够在有整数倍的原料的情况下大批量制作液体
      */
     public static CrucibleRecipe getRecipe(FluidStack inputFluid, List<ItemStack> inputs){
-
+        //TODO 函数目前还有未知问题等待修复
         for(CrucibleRecipe recipe : IRecipeManager.crucibleRecipes){
             if(recipe.inputFluid == inputFluid){
                 if(recipe.itemInputs.containsAll(inputs) & inputs.containsAll(recipe.itemInputs)){
                     return recipe;
-                };
+                }
             }
         }
 
