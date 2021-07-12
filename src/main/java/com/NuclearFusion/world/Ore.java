@@ -16,9 +16,9 @@ public class Ore {
     public static ConfiguredFeature<?, ?> ORE_COPPER_CONFIG;
 
     /**
-     * BASE_STONE_OVERWORLD Ö÷ÊÀ½ç
-     * BASE_STONE_NETHER Ä©µØ
-     * NETHERRACK µØÓü
+     * BASE_STONE_OVERWORLD ä¸»ä¸–ç•Œ
+     * BASE_STONE_NETHER æœ«åœ°
+     * NETHERRACK åœ°ç‹±
      */
     @SubscribeEvent
     public static void setup(FMLCommonSetupEvent event) {
@@ -26,7 +26,7 @@ public class Ore {
                 Feature.ORE.withConfiguration(
                         new OreFeatureConfig(
                                 OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD,
-                                BlockRegistry.BLOCK_ORE_MALACHITE.get().getDefaultState(), 8//×î¶àÊıÁ¿
+                                BlockRegistry.BLOCK_ORE_MALACHITE.get().getDefaultState(), 8//æœ€å¤šæ•°é‡
                         )
                 ).range(70).square().count(20)
         );

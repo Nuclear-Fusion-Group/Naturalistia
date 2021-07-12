@@ -20,7 +20,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-//¸Ãº¯Êı²Î¿¼ÁËmekµÄÊµÏÖ
+//è¯¥å‡½æ•°å‚è€ƒäº†mekçš„å®ç°
 public abstract class BaseBlockLootTables extends BlockLootTables {
 
     private final Set<Block> knownBlocks = new ObjectOpenHashSet<>();
@@ -30,7 +30,7 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
     protected abstract void addTables();
 
     /**
-     * Ìí¼Ó×¢²áµÄ·½¿é
+     * æ·»åŠ æ³¨å†Œçš„æ–¹å—
      *
      * @param block
      * @param table
@@ -42,7 +42,7 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
     }
 
     /**
-     * »ñÈ¡×¢²áµÄ·½¿é
+     * è·å–æ³¨å†Œçš„æ–¹å—
      *
      * @return
      */
@@ -53,7 +53,7 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
     }
 
     /**
-     * Ìí¼ÓÌø¹ı·½¿é
+     * æ·»åŠ è·³è¿‡æ–¹å—
      *
      * @param blocks
      */
@@ -62,7 +62,7 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
     }
 
     /**
-     * ÅĞ¶ÏÊÇ·ñÎªÒÑ×¢²á»òºöÂÔµÄ·½¿é
+     * åˆ¤æ–­æ˜¯å¦ä¸ºå·²æ³¨å†Œæˆ–å¿½ç•¥çš„æ–¹å—
      *
      * @param block
      * @return
@@ -72,25 +72,25 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
     }
 
     /**
-     * ÅúÁ¿×¢²á·½¿éÕ½ÀûÆ·±í
+     * æ‰¹é‡æ³¨å†Œæ–¹å—æˆ˜åˆ©å“è¡¨
      *
      * @param blocks
      */
     protected void dropSelfWithContents(List<RegistryObject<Block>> blocks) {
         for (RegistryObject<Block> block1 : blocks) {
-            //»ñÈ¡·½¿é
+            //è·å–æ–¹å—
             Block block = block1.get();
-            //ÅĞ¶ÏÊÇ·ñÎªÒÑ×¢²á·½¿é
+            //åˆ¤æ–­æ˜¯å¦ä¸ºå·²æ³¨å†Œæ–¹å—
             if (skipBlock(block)) {
                 continue;
             }
-            //»ñÈ¡Ä¬ÈÏnbt¹¹Ôì
+            //è·å–é»˜è®¤nbtæ„é€ 
             CopyNbt.Builder nbtBuilder = CopyNbt.builder(CopyNbt.Source.BLOCK_ENTITY);
 
             boolean hasData = false;
             @Nullable
             TileEntity tile = null;
-            //»ñÈ¡TileEntity
+            //è·å–TileEntity
             if (block instanceof TileEntityProvider) {
                 tile = ((TileEntityProvider) block).getTileType().create();
             }
@@ -100,7 +100,7 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
                     hasData = true;
                 }
             }
-            //ÅĞ¶ÏÊÇ·ñÓĞÊı¾İ Èç¹ûÃ»ÓĞ¾ÍÉú³ÉÄ¬ÈÏÕ½ÀûÆ·±í
+            //åˆ¤æ–­æ˜¯å¦æœ‰æ•°æ® å¦‚æœæ²¡æœ‰å°±ç”Ÿæˆé»˜è®¤æˆ˜åˆ©å“è¡¨
             if (!hasData) {
                 registerLootTable(block, LootTable.builder().addLootPool(withExplosionDecay(block, LootPool.builder()
                                 .name("main")

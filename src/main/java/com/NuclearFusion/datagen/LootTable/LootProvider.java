@@ -20,7 +20,7 @@ public class LootProvider extends BaseLootProvider {
         return new BlockLootTable();
     }
 
-    //屏蔽掉无用的信息
+    //灞忚斀鎺夋棤鐢ㄧ殑淇℃伅
     @Override
     protected void validate(Map<ResourceLocation, LootTable> map, ValidationTracker validationtracker) {
 

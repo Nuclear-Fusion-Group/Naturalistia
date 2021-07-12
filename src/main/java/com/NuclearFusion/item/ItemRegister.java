@@ -13,7 +13,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import javax.annotation.Nonnull;
 
 public class ItemRegister {
-    //��Ʒע��
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Naturalistia.MOD_ID);
 
     public static final RegistryObject<Item> ITEM_BOTANIC_CRUCIBLE = ITEMS.register("botanic_crucible", () -> new BlockItem(BlockRegistry.BLOCK_BOTANIC_CRUCIBLE.get(), defaultBuilder()));
@@ -27,7 +26,7 @@ public class ItemRegister {
 
     public static final RegistryObject<Item> ITEM_INGOT_MALACHITE = ITEMS.register("copper", () -> new Item(defaultBuilder()));
 
-    //��ǩҳ
+    //标签页
     public static ItemGroup creativeTab = new ItemGroup(Naturalistia.MOD_ID) {
         @Nonnull
         @Override
@@ -37,7 +36,7 @@ public class ItemRegister {
     };
 
     /**
-     * �Զ����뵽��ǩҳ
+     * 标签页导入
      */
     public static Item.Properties defaultBuilder() {
         return new Item.Properties().group(creativeTab);
