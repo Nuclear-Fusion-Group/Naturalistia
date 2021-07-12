@@ -26,6 +26,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
@@ -62,9 +63,6 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
                 return 0;
             }
         };
-
-        tank.setFluid(new FluidStack(Fluids.WATER, 4000));
-
     }
 
     public ItemStackHandler itemStackHandler = new ItemStackHandler(6){
@@ -179,6 +177,10 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
 
     @Override
     public void tick() {
+        if(!getWorld().isRemote) {
+            BlockState state = world.getBlockState(pos);
+            getWorld().notifyBlockUpdate(pos, state, state, 3);
+        }
     }
 
     @Override
