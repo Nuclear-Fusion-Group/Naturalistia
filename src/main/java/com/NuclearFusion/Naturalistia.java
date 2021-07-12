@@ -6,7 +6,6 @@ import com.NuclearFusion.client.handler.HUDHandler;
 import com.NuclearFusion.client.renderer.TileBotanicCrucibleRenderer;
 import com.NuclearFusion.item.ItemRegister;
 import com.NuclearFusion.world.Ore;
-import com.NuclearFusion.world.OreRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
