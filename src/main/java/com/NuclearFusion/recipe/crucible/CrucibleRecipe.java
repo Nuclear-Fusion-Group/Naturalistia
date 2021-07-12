@@ -41,9 +41,26 @@ public class CrucibleRecipe {
      */
     public static CrucibleRecipe getRecipe(FluidStack inputFluid, List<ItemStack> inputs){
         //TODO 函数目前还有未知问题等待修复
+
         for(CrucibleRecipe recipe : IRecipeManager.crucibleRecipes){
-            if(recipe.inputFluid == inputFluid){
-                if(recipe.itemInputs.containsAll(inputs) & inputs.containsAll(recipe.itemInputs)){
+
+            if(recipe.inputFluid.isFluidStackIdentical(inputFluid)){
+
+                Naturalistia.LOGGER.info(inputs);
+                Naturalistia.LOGGER.info(recipe.itemInputs);
+
+                boolean match = true;
+                for (int i = 0; i < 6; i++) {
+
+                    Naturalistia.LOGGER.info(inputs.get(i));
+                    Naturalistia.LOGGER.info(recipe.itemInputs.get(i));
+                    Naturalistia.LOGGER.info(!inputs.get(i).isItemEqual(recipe.itemInputs.get(i)) & !((inputs.get(i).isEmpty()) & recipe.itemInputs.get(i).isEmpty()));
+
+                    if(!inputs.get(i).isItemEqual(recipe.itemInputs.get(i)) & !((inputs.get(i).isEmpty()) & recipe.itemInputs.get(i).isEmpty())){
+                        match = false;
+                    }
+                }
+                if(match){
                     return recipe;
                 }
             }

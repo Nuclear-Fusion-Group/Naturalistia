@@ -1,6 +1,7 @@
 package com.NuclearFusion.block.tileentity;
 
 import com.NuclearFusion.Naturalistia;
+import com.NuclearFusion.recipe.IRecipeManager;
 import com.NuclearFusion.recipe.crucible.CrucibleRecipe;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -165,6 +166,11 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
                         break;
                     }
                 }
+
+                Naturalistia.LOGGER.info(tank.getFluid());
+
+                Naturalistia.LOGGER.info(list);
+
                 onGoingRecipe = CrucibleRecipe.getRecipe(tank.getFluid(), list);
 
                 if(onGoingRecipe != prevRecipe){
@@ -181,23 +187,25 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
 
             } else {
                 if(onGoingRecipe!=null){
+                    if(tank.getFluid().getAmount() + onGoingRecipe.outputFluid.getAmount() > tank.getCapacity()){
+                        progress = 0;
+                    }
 
                     Naturalistia.LOGGER.info("3");
 
                     if(progress == onGoingRecipe.timeTaken){
 
                         if(tank.getFluid().getFluid() == onGoingRecipe.outputFluid.getFluid()){
-
-                            if(tank.getFluid().getAmount() + onGoingRecipe.outputFluid.getAmount() > tank.getCapacity()){
-                                progress = 0;
-                            } else {
-                                tank.getFluid().setAmount(tank.getFluid().getAmount() + onGoingRecipe.outputFluid.getAmount());
-                                for (int i = 0; i < 6; i++) {
-                                    itemStackHandler.extractItem(i, 64, false);
-                                }
+                            tank.getFluid().setAmount(tank.getFluid().getAmount() + onGoingRecipe.outputFluid.getAmount());
+                            for (int i = 0; i < 6; i++) {
+                                itemStackHandler.extractItem(i, 64, false);
                             }
                         } else if(tank.isEmpty()){
-                            tank.setFluid(tank.getFluid());
+                            for (int i = 0; i < 6; i++) {
+                                itemStackHandler.extractItem(i, 64, false);
+                            }
+                            tank.setFluid(onGoingRecipe.outputFluid);
+                            progress = 0;
                         }
                     }
                     if(onLit()){
