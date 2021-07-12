@@ -5,5 +5,7 @@
   "block.naturalistia.belladonna": "belladonna",
   "block.naturalistia.chilipepper": "chilipepper",
   "block.naturalistia.datura": "datura",
-  "block.naturalistia.skyfaery": "skyfaery"
+  "block.naturalistia.skyfaery": "skyfaery",
+  "block.naturalistia.ore_malachite": "malachite",
+  "item.naturalistia.copper": "copper"
 }

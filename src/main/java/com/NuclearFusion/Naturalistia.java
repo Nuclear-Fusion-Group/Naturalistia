@@ -5,10 +5,15 @@ import com.NuclearFusion.block.tileentity.TileEntityRegistry;
 import com.NuclearFusion.client.handler.HUDHandler;
 import com.NuclearFusion.client.renderer.TileBotanicCrucibleRenderer;
 import com.NuclearFusion.item.ItemRegister;
+import com.NuclearFusion.world.Ore;
+import com.NuclearFusion.world.OreRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.GenerationStage;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -49,9 +54,7 @@ public class Naturalistia {
         MinecraftForge.EVENT_BUS.register(this);
 
         MinecraftForge.EVENT_BUS.addListener(HUDHandler::onDrawScreenPost);
-        //����ע��
         BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        //��Ʒע��
         ItemRegister.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         TileEntityRegistry.TILE_ENTITY_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
@@ -89,6 +92,15 @@ public class Naturalistia {
     public void onServerStarting(FMLServerStartingEvent event) {
         // do something when the server starts
         LOGGER.info("HELLO from server starting");
+    }
+
+    @SubscribeEvent
+    public void onBiomeLoading(final BiomeLoadingEvent biome) {
+        if (biome.getCategory() == Biome.Category.NETHER || biome.getCategory() == Biome.Category.THEEND)
+            return;
+
+        biome.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES)
+                .add(() -> Ore.ORE_COPPER_CONFIG);
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD

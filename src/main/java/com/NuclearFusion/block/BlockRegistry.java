@@ -25,6 +25,8 @@ public class BlockRegistry {
     public static final RegistryObject<Block> BLOCK_DATURA = BLOCKS.register("datura", Datura::new);
     public static final RegistryObject<Block> BLOCK_SKYFAERY = BLOCKS.register("skyfaery", Skyfaery::new);
 
+    public static final RegistryObject<Block> BLOCK_ORE_MALACHITE = BLOCKS.register("ore_malachite", () -> new Block(defaultBuilder()));
+
     public static ArrayList<RegistryObject<Block>> getBlocks() {
         return new ArrayList<>(BLOCKS.getEntries());
     }

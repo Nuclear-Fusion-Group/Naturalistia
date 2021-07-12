@@ -23,6 +23,10 @@ public class ItemRegister {
     public static final RegistryObject<Item> ITEM_DATURA = ITEMS.register("datura", () -> new BlockItem(BlockRegistry.BLOCK_DATURA.get(), defaultBuilder()));
     public static final RegistryObject<Item> ITEM_SKYFAERY = ITEMS.register("skyfaery", () -> new BlockItem(BlockRegistry.BLOCK_SKYFAERY.get(), defaultBuilder()));
 
+    public static final RegistryObject<Item> ITEM_ORE_MALACHITE = ITEMS.register("ore_malachite", () -> new BlockItem(BlockRegistry.BLOCK_ORE_MALACHITE.get(), defaultBuilder()));
+
+    public static final RegistryObject<Item> ITEM_INGOT_MALACHITE = ITEMS.register("copper", () -> new Item(defaultBuilder()));
+
     //��ǩҳ
     public static ItemGroup creativeTab = new ItemGroup(Naturalistia.MOD_ID) {
         @Nonnull
