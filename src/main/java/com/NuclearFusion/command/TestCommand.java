@@ -29,14 +29,14 @@ public class TestCommand implements Command<CommandSource> {
         Iterator<String> iterator = nbt.keySet().iterator();
         String key;
 
-        context.getSource().sendFeedback(new TranslationTextComponent("§r物品id:" + item.getTranslationKey()), false);
-        context.getSource().sendFeedback(new TranslationTextComponent("§e物品tags内容:" + item.getItem().getTags()), false);
-        context.getSource().sendFeedback(new TranslationTextComponent("§b物品nbt内容:"), false);
+        context.getSource().sendFeedback(new TranslationTextComponent("搂r鐗╁搧id:" + item.getTranslationKey()), false);
+        context.getSource().sendFeedback(new TranslationTextComponent("搂e鐗╁搧tags鍐呭:" + item.getItem().getTags()), false);
+        context.getSource().sendFeedback(new TranslationTextComponent("搂b鐗╁搧nbt鍐呭:"), false);
 
         while (true) {
             if (iterator.hasNext()) {
                 key = iterator.next();
-                context.getSource().sendFeedback(new TranslationTextComponent("§b" + key + ":" + nbt.get(key)), false);
+                context.getSource().sendFeedback(new TranslationTextComponent("搂b" + key + ":" + nbt.get(key)), false);
             } else {
                 break;
             }
