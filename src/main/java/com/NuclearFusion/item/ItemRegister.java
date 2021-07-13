@@ -23,8 +23,12 @@ public class ItemRegister {
     public static final RegistryObject<Item> ITEM_SKYFAERY = ITEMS.register("skyfaery", () -> new BlockItem(BlockRegistry.BLOCK_SKYFAERY.get(), defaultBuilder()));
 
     public static final RegistryObject<Item> ITEM_ORE_MALACHITE = ITEMS.register("ore_malachite", () -> new BlockItem(BlockRegistry.BLOCK_ORE_MALACHITE.get(), defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_ORE_NIMLOSILVER = ITEMS.register("ore_nimlosilver", () -> new BlockItem(BlockRegistry.BLOCK_ORE_NIMLOSILVER.get(), defaultBuilder()));
+
+    public static final RegistryObject<Item> ITEM_ORE_NIMLOSILVER_BLOCK = ITEMS.register("nimlosilver_block", () -> new BlockItem(BlockRegistry.BLOCK_ORE_NIMLOSILVER_BLOCK.get(), defaultBuilder()));
 
     public static final RegistryObject<Item> ITEM_INGOT_MALACHITE = ITEMS.register("copper", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_INGOT_NIMLOSILVER = ITEMS.register("nimlosilver", () -> new Item(defaultBuilder()));
 
     //标签页
     public static ItemGroup creativeTab = new ItemGroup(Naturalistia.MOD_ID) {

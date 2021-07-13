@@ -7,5 +7,8 @@
   "block.naturalistia.datura": "datura",
   "block.naturalistia.skyfaery": "skyfaery",
   "block.naturalistia.ore_malachite": "malachite",
+  "block.naturalistia.ore_nimlosilver": "nimlosilver",
+  "block.naturalistia.nimlosilver_block": "nimlosilver_block",
+  "item.naturalistia.nimlosilver": "ingot_nimlosilver",
   "item.naturalistia.copper": "copper"
 }

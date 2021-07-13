@@ -103,6 +103,8 @@ public class Naturalistia {
 
         biome.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES)
                 .add(() -> Ore.ORE_COPPER_CONFIG);
+        biome.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES)
+                .add(() -> Ore.ORE_NIMLOSILVER_CONFIG);
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
