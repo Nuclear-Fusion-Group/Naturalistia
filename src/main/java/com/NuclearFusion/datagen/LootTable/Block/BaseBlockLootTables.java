@@ -88,6 +88,7 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
             CopyNbt.Builder nbtBuilder = CopyNbt.builder(CopyNbt.Source.BLOCK_ENTITY);
 
             boolean hasData = false;
+            /*
             @Nullable
             TileEntity tile = null;
             //获取TileEntity
@@ -100,6 +101,7 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
                     hasData = true;
                 }
             }
+             */
             //判断是否有数据 如果没有就生成默认战利品表
             if (!hasData) {
                 registerLootTable(block, LootTable.builder().addLootPool(withExplosionDecay(block, LootPool.builder()
