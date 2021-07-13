@@ -17,10 +17,16 @@ public class ItemRegister {
 
     public static final RegistryObject<Item> ITEM_BOTANIC_CRUCIBLE = ITEMS.register("botanic_crucible", () -> new BlockItem(BlockRegistry.BLOCK_BOTANIC_CRUCIBLE.get(), defaultBuilder()));
     public static final RegistryObject<Item> ITEM_BOTANIC_ALTAR = ITEMS.register("botanic_altar", () -> new BlockItem(BlockRegistry.BLOCK_BOTANIC_ALTAR.get(), defaultBuilder()));
-    public static final RegistryObject<Item> ITEM_BELLADONNA = ITEMS.register("belladonna", () -> new BlockItem(BlockRegistry.BLOCK_BELLADONNA.get(), defaultBuilder()));
-    public static final RegistryObject<Item> ITEM_CHILIPEPPER = ITEMS.register("chilipepper", () -> new BlockItem(BlockRegistry.BLOCK_CHILIPEPPER.get(), defaultBuilder()));
-    public static final RegistryObject<Item> ITEM_DATURA = ITEMS.register("datura", () -> new BlockItem(BlockRegistry.BLOCK_DATURA.get(), defaultBuilder()));
-    public static final RegistryObject<Item> ITEM_SKYFAERY = ITEMS.register("skyfaery", () -> new BlockItem(BlockRegistry.BLOCK_SKYFAERY.get(), defaultBuilder()));
+
+    public static final RegistryObject<Item> ITEM_BELLADONNA = ITEMS.register("belladonna", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_CHILIPEPPER = ITEMS.register("chilipepper", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_DATURA = ITEMS.register("datura", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_SKYFAERY = ITEMS.register("skyfaery", () -> new Item(defaultBuilder()));
+
+    public static final RegistryObject<Item> ITEM_BELLADONNA_SEED = ITEMS.register("belladonna_seed", () -> new BlockItem(BlockRegistry.BLOCK_BELLADONNA.get(), defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_CHILIPEPPER_SEED = ITEMS.register("chilipepper_seed", () -> new BlockItem(BlockRegistry.BLOCK_CHILIPEPPER.get(), defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_DATURA_SEED = ITEMS.register("datura_seed", () -> new BlockItem(BlockRegistry.BLOCK_DATURA.get(), defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_SKYFAERY_SEED = ITEMS.register("skyfaery_seed", () -> new BlockItem(BlockRegistry.BLOCK_SKYFAERY.get(), defaultBuilder()));
 
     public static final RegistryObject<Item> ITEM_ORE_MALACHITE = ITEMS.register("ore_malachite", () -> new BlockItem(BlockRegistry.BLOCK_ORE_MALACHITE.get(), defaultBuilder()));
     public static final RegistryObject<Item> ITEM_ORE_NIMLOSILVER = ITEMS.register("ore_nimlosilver", () -> new BlockItem(BlockRegistry.BLOCK_ORE_NIMLOSILVER.get(), defaultBuilder()));
@@ -35,7 +41,7 @@ public class ItemRegister {
         @Nonnull
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(ItemRegister.ITEM_BOTANIC_CRUCIBLE.get());
+            return new ItemStack(ItemRegister.ITEM_BOTANIC_ALTAR.get());
         }
     };
 

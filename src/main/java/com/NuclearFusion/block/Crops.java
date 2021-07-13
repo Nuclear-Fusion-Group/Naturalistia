@@ -6,6 +6,6 @@ import net.minecraft.block.material.Material;
 
 public class Crops {
     public static AbstractBlock.Properties CropsBuilder(){
-        return AbstractBlock.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().zeroHardnessAndResistance();
+        return AbstractBlock.Properties.create(Material.PLANTS).sound(SoundType.CROP).tickRandomly().doesNotBlockMovement().zeroHardnessAndResistance();
     }
 }

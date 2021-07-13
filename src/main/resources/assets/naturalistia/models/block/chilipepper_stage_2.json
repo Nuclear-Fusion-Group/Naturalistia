@@ -1,0 +1,6 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "naturalistia:blocks/chilipepper_stage_2"
+  }
+}

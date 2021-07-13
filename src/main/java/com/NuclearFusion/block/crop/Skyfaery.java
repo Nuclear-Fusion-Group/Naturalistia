@@ -12,7 +12,12 @@ public class Skyfaery extends CropsBlock {
     }
 
     @Override
+    public int getMaxAge() {
+        return 5;
+    }
+
+    @Override
     protected IItemProvider getSeedsItem() {
-        return ItemRegister.ITEM_SKYFAERY.get();
+        return ItemRegister.ITEM_SKYFAERY_SEED.get();
     }
 }

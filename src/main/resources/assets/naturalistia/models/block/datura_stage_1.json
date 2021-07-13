@@ -1,0 +1,6 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "naturalistia:blocks/datura_stage_1"
+  }
+}

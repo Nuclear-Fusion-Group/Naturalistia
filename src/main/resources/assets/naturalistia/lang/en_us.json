@@ -2,13 +2,17 @@
   "itemGroup.naturalistia": "Naturalistia",
   "block.naturalistia.botanic_crucible": "botanic_crucible",
   "block.naturalistia.botanic_altar": "botanic_altar",
-  "block.naturalistia.belladonna": "belladonna",
-  "block.naturalistia.chilipepper": "chilipepper",
-  "block.naturalistia.datura": "datura",
-  "block.naturalistia.skyfaery": "skyfaery",
+  "block.naturalistia.belladonna": "belladonna seed",
+  "block.naturalistia.chilipepper": "chilipepper seed",
+  "block.naturalistia.datura": "datura seed",
+  "block.naturalistia.skyfaery": "skyfaery seed",
   "block.naturalistia.ore_malachite": "malachite",
   "block.naturalistia.ore_nimlosilver": "nimlosilver",
   "block.naturalistia.nimlosilver_block": "nimlosilver_block",
   "item.naturalistia.nimlosilver": "ingot_nimlosilver",
-  "item.naturalistia.copper": "copper"
+  "item.naturalistia.copper": "copper",
+  "item.naturalistia.belladonna": "belladonna",
+  "item.naturalistia.chilipepper": "chilipepper",
+  "item.naturalistia.datura": "datura",
+  "item.naturalistia.skyfaery": "skyfaery"
 }

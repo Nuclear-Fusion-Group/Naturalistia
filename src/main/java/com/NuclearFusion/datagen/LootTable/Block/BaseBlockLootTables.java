@@ -4,6 +4,7 @@ import com.NuclearFusion.api.TileEntityProvider;
 import com.NuclearFusion.api.NBTConstants;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.block.Block;
+import net.minecraft.block.CropsBlock;
 import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.loot.ConstantRange;
 import net.minecraft.loot.ItemLootEntry;
@@ -82,6 +83,10 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
             Block block = block1.get();
             //判断是否为已注册方块
             if (skipBlock(block)) {
+                continue;
+            }
+            //作物方块手写
+            if (block instanceof CropsBlock){
                 continue;
             }
             //获取默认nbt构造
