@@ -29,6 +29,7 @@ public class TestCommand implements Command<CommandSource> {
         Iterator<String> iterator = nbt.keySet().iterator();
         String key;
 
+        //以后可以把这些改成自定义项
         context.getSource().sendFeedback(new TranslationTextComponent("§r物品id:" + item.getTranslationKey()), false);
         context.getSource().sendFeedback(new TranslationTextComponent("§e物品tags内容:" + item.getItem().getTags()), false);
         context.getSource().sendFeedback(new TranslationTextComponent("§b物品nbt内容:"), false);
