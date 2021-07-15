@@ -2,6 +2,8 @@ package com.NuclearFusion.item;
 
 import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.Naturalistia;
+import com.NuclearFusion.item.arms.NimlosilverShovel;
+import com.NuclearFusion.item.arms.NimlosilverSword;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -36,6 +38,9 @@ public class ItemRegister {
 
     public static final RegistryObject<Item> ITEM_INGOT_MALACHITE = ITEMS.register("copper", () -> new Item(defaultBuilder()));
     public static final RegistryObject<Item> ITEM_INGOT_NIMLOSILVER = ITEMS.register("nimlosilver", () -> new Item(defaultBuilder()));
+
+    public static final RegistryObject<Item> ITEM_ARMS_SWORD_NIMLOSILVER = ITEMS.register("nimlosilver_sword", NimlosilverSword::new);
+    public static final RegistryObject<Item> ITEM_ARMS_SHOVEL_NIMLOSILVER = ITEMS.register("nimlosilver_shovel", NimlosilverShovel::new);
 
     //标签页
     public static ItemGroup creativeTab = new ItemGroup(Naturalistia.MOD_ID) {
