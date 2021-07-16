@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "naturalistia:items/nimlosilver_shovel"
+  }
+}

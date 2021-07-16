@@ -11,7 +11,12 @@ public class Datura extends CropsBlock {
     }
 
     @Override
+    public int getMaxAge() {
+        return 5;
+    }
+
+    @Override
     protected IItemProvider getSeedsItem() {
-        return ItemRegister.ITEM_DATURA.get();
+        return ItemRegister.ITEM_DATURA_SEED.get();
     }
 }

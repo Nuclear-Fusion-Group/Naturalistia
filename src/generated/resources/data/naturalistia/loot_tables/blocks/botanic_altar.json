@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "naturalistia:chilipepper"
+          "name": "naturalistia:botanic_altar"
         }
       ],
       "functions": [

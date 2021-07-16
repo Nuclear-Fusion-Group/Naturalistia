@@ -12,9 +12,14 @@ public class Belladonna extends CropsBlock {
         super(Crops.CropsBuilder());
     }
 
+    @Override
+    public int getMaxAge() {
+        return 5;
+    }
+
     @Nonnull
     @Override
     protected IItemProvider getSeedsItem() {
-        return ItemRegister.ITEM_BELLADONNA.get();
+        return ItemRegister.ITEM_BELLADONNA_SEED.get();
     }
 }

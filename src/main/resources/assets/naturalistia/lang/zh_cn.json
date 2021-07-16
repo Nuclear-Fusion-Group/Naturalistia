@@ -7,5 +7,15 @@
   "block.naturalistia.datura": "曼陀罗种子",
   "block.naturalistia.skyfaery": "天仙子种子",
   "block.naturalistia.ore_malachite": "孔雀石",
-  "item.naturalistia.copper": "铜锭"
+  "block.naturalistia.ore_nimlosilver": "尼姆洛白银矿",
+  "block.naturalistia.nimlosilver_block": "尼姆洛白银块",
+  "block.naturalistia.copper_block": "铜块",
+  "item.naturalistia.nimlosilver": "尼姆洛白银锭",
+  "item.naturalistia.copper": "铜锭",
+  "item.naturalistia.belladonna": "颠茄",
+  "item.naturalistia.chilipepper": "辣椒",
+  "item.naturalistia.datura": "曼陀罗",
+  "item.naturalistia.skyfaery": "天仙子",
+  "item.naturalistia.nimlosilver_sword": "尼姆洛白银剑",
+  "item.naturalistia.nimlosilver_shovel": "尼姆洛白银锹"
 }

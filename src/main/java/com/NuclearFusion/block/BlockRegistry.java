@@ -26,6 +26,10 @@ public class BlockRegistry {
     public static final RegistryObject<Block> BLOCK_SKYFAERY = BLOCKS.register("skyfaery", Skyfaery::new);
 
     public static final RegistryObject<Block> BLOCK_ORE_MALACHITE = BLOCKS.register("ore_malachite", () -> new Block(defaultBuilder()));
+    public static final RegistryObject<Block> BLOCK_ORE_NIMLOSILVER = BLOCKS.register("ore_nimlosilver", () -> new Block(defaultBuilder()));
+
+    public static final RegistryObject<Block> BLOCK_ORE_COPPER_BLOCK = BLOCKS.register("copper_block", () -> new Block(defaultBuilder()));
+    public static final RegistryObject<Block> BLOCK_ORE_NIMLOSILVER_BLOCK = BLOCKS.register("nimlosilver_block", () -> new Block(defaultBuilder()));
 
     public static ArrayList<RegistryObject<Block>> getBlocks() {
         return new ArrayList<>(BLOCKS.getEntries());

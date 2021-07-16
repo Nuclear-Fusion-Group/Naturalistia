@@ -4,6 +4,7 @@ import com.NuclearFusion.api.TileEntityProvider;
 import com.NuclearFusion.api.NBTConstants;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.block.Block;
+import net.minecraft.block.CropsBlock;
 import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.loot.ConstantRange;
 import net.minecraft.loot.ItemLootEntry;
@@ -84,10 +85,15 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
             if (skipBlock(block)) {
                 continue;
             }
+            //作物方块手写
+            if (block instanceof CropsBlock){
+                continue;
+            }
             //获取默认nbt构造
             CopyNbt.Builder nbtBuilder = CopyNbt.builder(CopyNbt.Source.BLOCK_ENTITY);
 
             boolean hasData = false;
+            /*
             @Nullable
             TileEntity tile = null;
             //获取TileEntity
@@ -100,6 +106,7 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
                     hasData = true;
                 }
             }
+             */
             //判断是否有数据 如果没有就生成默认战利品表
             if (!hasData) {
                 registerLootTable(block, LootTable.builder().addLootPool(withExplosionDecay(block, LootPool.builder()

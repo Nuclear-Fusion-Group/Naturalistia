@@ -12,7 +12,12 @@ public class Chilipepper extends CropsBlock {
     }
 
     @Override
+    public int getMaxAge() {
+        return 5;
+    }
+
+    @Override
     protected IItemProvider getSeedsItem() {
-        return ItemRegister.ITEM_CHILIPEPPER.get();
+        return ItemRegister.ITEM_CHILIPEPPER_SEED.get();
     }
 }
