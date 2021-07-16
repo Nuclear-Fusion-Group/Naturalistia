@@ -2,12 +2,16 @@ package com.NuclearFusion.item.arms;
 
 import com.NuclearFusion.api.ModItemTier;
 import com.NuclearFusion.item.ItemRegister;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvents;
 
 public class NimlosilverSword extends SwordItem {
@@ -17,16 +21,8 @@ public class NimlosilverSword extends SwordItem {
     }
 
     @Override
-    public boolean onLeftClickEntity(ItemStack stack, PlayerEntity player, Entity entity) {
-        if (entity instanceof MonsterEntity) {
-            if (((MonsterEntity) entity).getCreatureAttribute().equals(CreatureAttribute.UNDEAD) || ((MonsterEntity) entity).getCreatureAttribute().equals(CreatureAttribute.ARTHROPOD)) {
-                ((MonsterEntity) entity).setHealth(((MonsterEntity) entity).getHealth()-this.getAttackDamage());
-                if (((MonsterEntity) entity).getShouldBeDead()){
-                    entity.playSound(SoundEvents.ENTITY_ZOMBIE_DEATH,200,200);
-                }
-                return false;
-            }
-        }
-        return super.onLeftClickEntity(stack, player, entity);
+    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        target.attackEntityFrom(DamageSource.DRAGON_BREATH, EnchantmentHelper.getSweepingDamageRatio(attacker) * 5);
+        return super.hitEntity(stack, target, attacker);
     }
 }
