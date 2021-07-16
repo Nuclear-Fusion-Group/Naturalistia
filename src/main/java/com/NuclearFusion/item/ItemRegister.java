@@ -42,7 +42,6 @@ public class ItemRegister {
     public static final RegistryObject<Item> ITEM_ARMS_SWORD_NIMLOSILVER = ITEMS.register("nimlosilver_sword", NimlosilverSword::new);
     public static final RegistryObject<Item> ITEM_ARMS_SHOVEL_NIMLOSILVER = ITEMS.register("nimlosilver_shovel", NimlosilverShovel::new);
 
-    //标签页
     public static ItemGroup creativeTab = new ItemGroup(Naturalistia.MOD_ID) {
         @Nonnull
         @Override
@@ -51,9 +50,6 @@ public class ItemRegister {
         }
     };
 
-    /**
-     * 标签页导入
-     */
     public static Item.Properties defaultBuilder() {
         return new Item.Properties().group(creativeTab);
     }
