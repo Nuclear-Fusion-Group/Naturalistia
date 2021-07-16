@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "naturalistia:blocks/ore_chloroplast"
+  }
+}

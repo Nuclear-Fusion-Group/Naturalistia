@@ -1,4 +1,4 @@
-package com.NuclearFusion.item.arms;
+package com.NuclearFusion.item.arms.sword;
 
 import com.NuclearFusion.api.ModItemTier;
 import com.NuclearFusion.item.ItemRegister;
@@ -17,7 +17,7 @@ import net.minecraft.util.SoundEvents;
 public class NimlosilverSword extends SwordItem {
 
     public NimlosilverSword() {
-        super(new ModItemTier(3, 1000, 10.0F, 3.0F, 30, ItemRegister.ITEM_INGOT_NIMLOSILVER.get()), 1, -2.4F, ItemRegister.defaultBuilder());
+        super(new ModItemTier(3, 250, 10.0F, 3.0F, 30, ItemRegister.ITEM_INGOT_NIMLOSILVER.get()), 1, -2.4F, ItemRegister.defaultBuilder());
     }
 
     @Override

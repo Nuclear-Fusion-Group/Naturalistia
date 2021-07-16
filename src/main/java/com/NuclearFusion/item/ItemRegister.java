@@ -2,8 +2,8 @@ package com.NuclearFusion.item;
 
 import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.Naturalistia;
-import com.NuclearFusion.item.arms.NimlosilverShovel;
-import com.NuclearFusion.item.arms.NimlosilverSword;
+import com.NuclearFusion.item.arms.shovel.NimlosilverShovel;
+import com.NuclearFusion.item.arms.sword.NimlosilverSword;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -32,12 +32,15 @@ public class ItemRegister {
 
     public static final RegistryObject<Item> ITEM_ORE_MALACHITE = ITEMS.register("ore_malachite", () -> new BlockItem(BlockRegistry.BLOCK_ORE_MALACHITE.get(), defaultBuilder()));
     public static final RegistryObject<Item> ITEM_ORE_NIMLOSILVER = ITEMS.register("ore_nimlosilver", () -> new BlockItem(BlockRegistry.BLOCK_ORE_NIMLOSILVER.get(), defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_ORE_CHLOROPLAST = ITEMS.register("ore_chloroplast", () -> new BlockItem(BlockRegistry.BLOCK_ORE_CHLOROPLAST.get(), defaultBuilder()));
 
     public static final RegistryObject<Item> ITEM_ORE_COPPER_BLOCK = ITEMS.register("copper_block", () -> new BlockItem(BlockRegistry.BLOCK_ORE_COPPER_BLOCK.get(), defaultBuilder()));
     public static final RegistryObject<Item> ITEM_ORE_NIMLOSILVER_BLOCK = ITEMS.register("nimlosilver_block", () -> new BlockItem(BlockRegistry.BLOCK_ORE_NIMLOSILVER_BLOCK.get(), defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_ORE_CHLOROPHYLL_BLOCK = ITEMS.register("chlorophyll_block", () -> new BlockItem(BlockRegistry.BLOCK_ORE_CHLOROPHYLL_BLOCK.get(), defaultBuilder()));
 
     public static final RegistryObject<Item> ITEM_INGOT_MALACHITE = ITEMS.register("copper", () -> new Item(defaultBuilder()));
     public static final RegistryObject<Item> ITEM_INGOT_NIMLOSILVER = ITEMS.register("nimlosilver", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_INGOT_CHLOROPHYLL = ITEMS.register("chlorophyll", () -> new Item(defaultBuilder()));
 
     public static final RegistryObject<Item> ITEM_ARMS_SWORD_NIMLOSILVER = ITEMS.register("nimlosilver_sword", NimlosilverSword::new);
     public static final RegistryObject<Item> ITEM_ARMS_SHOVEL_NIMLOSILVER = ITEMS.register("nimlosilver_shovel", NimlosilverShovel::new);
