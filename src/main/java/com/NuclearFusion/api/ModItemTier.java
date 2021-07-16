@@ -14,13 +14,13 @@ public class ModItemTier implements IItemTier {
     private final Item repairMaterial;
 
     /**
-     * ÕâÀïµÄÊÇ»ù´¡Öµ ÔÚ¹¤¾ßµÄ¹¹Ôìº¯ÊıÖĞµÄÊÇÔÚ»ù´¡ÖµÉÏĞŞ¸ÄµÄÄÚÈİ
-     * @param harvestLevelIn   ÍÚ¾òµÈ¼¶
-     * @param maxUsesIn        ×î´óÄÍ¾Ã
-     * @param efficiencyIn     Ğ§ÂÊ
-     * @param attackDamageIn   ¹¥»÷ÉËº¦
-     * @param enchantabilityIn ¸½Ä§µÈ¼¶(Ô½¸ßÔ½ÈİÒ×³öºÃ¸½Ä§)
-     * @param repairMaterialIn ĞŞ¸´²ÄÁÏ
+     * è¿™é‡Œçš„æ˜¯åŸºç¡€å€¼ åœ¨å·¥å…·çš„æ„é€ å‡½æ•°ä¸­çš„æ˜¯åœ¨åŸºç¡€å€¼ä¸Šä¿®æ”¹çš„å†…å®¹
+     * @param harvestLevelIn   æŒ–æ˜ç­‰çº§
+     * @param maxUsesIn        æœ€å¤§è€ä¹…
+     * @param efficiencyIn     æ•ˆç‡
+     * @param attackDamageIn   æ”»å‡»ä¼¤å®³
+     * @param enchantabilityIn é™„é­”ç­‰çº§(è¶Šé«˜è¶Šå®¹æ˜“å‡ºå¥½é™„é­”)
+     * @param repairMaterialIn ä¿®å¤ææ–™
      */
     public ModItemTier(int harvestLevelIn, int maxUsesIn, float efficiencyIn, float attackDamageIn, int enchantabilityIn, Item repairMaterialIn) {
         this.harvestLevel = harvestLevelIn;

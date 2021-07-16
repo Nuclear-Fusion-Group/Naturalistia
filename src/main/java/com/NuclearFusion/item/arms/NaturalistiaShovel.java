@@ -51,19 +51,19 @@ public class NaturalistiaShovel extends ToolItem {
         BlockState blockState = world.getBlockState(blockPos);
         BlockState resultToSet = blockState.getToolModifiedState(world, blockPos, player, itemStack, ToolType.HOE);
 
-        //Ç±ĞĞÓÒ¼ü±ä²İ¾¶
+        //æ½œè¡Œå³é”®å˜è‰å¾„
         if (player.isSteppingCarefully()) {
-            //»ñÈ¡Ãæ
+            //è·å–é¢
             if (context.getFace() == Direction.DOWN) {
                 return ActionResultType.PASS;
             }
             BlockState foundResult = blockState.getToolModifiedState(world, blockPos, player, itemStack, ToolType.SHOVEL);
             if (foundResult != null && world.isAirBlock(blockPos.up())) {
-                //±ä²İ¾¶
+                //å˜è‰å¾„
                 world.playSound(player, blockPos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 resultToSet = foundResult;
             } else if (blockState.getBlock() instanceof CampfireBlock && blockState.get(CampfireBlock.LIT)) {
-                //Ãğóô»ğ
+                //ç­ç¯ç«
                 if (!world.isRemote) {
                     world.playEvent(null, Constants.WorldEvents.FIRE_EXTINGUISH_SOUND, blockPos, 0);
                 }
@@ -74,7 +74,7 @@ public class NaturalistiaShovel extends ToolItem {
             if (context.getFace() == Direction.DOWN){
                 return ActionResultType.PASS;
             }
-            //±ä¸ûµØ
+            //å˜è€•åœ°
             if (resultToSet!=null && world.isAirBlock(blockPos.up())){
                 world.playSound(player,blockPos,SoundEvents.ITEM_HOE_TILL,SoundCategory.BLOCKS,1.0F,1.0F);
                 if (!world.isRemote){

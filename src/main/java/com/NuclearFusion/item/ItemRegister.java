@@ -2,6 +2,7 @@ package com.NuclearFusion.item;
 
 import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.Naturalistia;
+import com.NuclearFusion.item.arms.crossbow.NimlosilverCrossbow;
 import com.NuclearFusion.item.arms.shovel.NimlosilverShovel;
 import com.NuclearFusion.item.arms.sword.NimlosilverSword;
 import net.minecraft.item.BlockItem;
@@ -44,6 +45,7 @@ public class ItemRegister {
 
     public static final RegistryObject<Item> ITEM_ARMS_SWORD_NIMLOSILVER = ITEMS.register("nimlosilver_sword", NimlosilverSword::new);
     public static final RegistryObject<Item> ITEM_ARMS_SHOVEL_NIMLOSILVER = ITEMS.register("nimlosilver_shovel", NimlosilverShovel::new);
+    public static final RegistryObject<Item> ITEM_ARMS_CROSSBOW_NIMLOSILVER = ITEMS.register("nimlosilver_crossbow", NimlosilverCrossbow::new);
 
     public static ItemGroup creativeTab = new ItemGroup(Naturalistia.MOD_ID) {
         @Nonnull
