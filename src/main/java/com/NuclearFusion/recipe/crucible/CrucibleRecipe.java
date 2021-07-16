@@ -40,7 +40,6 @@ public class CrucibleRecipe {
      * todo: 配方能够在有整数倍的原料的情况下大批量制作液体
      */
     public static CrucibleRecipe getRecipe(FluidStack inputFluid, List<ItemStack> inputs){
-        //TODO 函数目前还有未知问题等待修复
 
         for(CrucibleRecipe recipe : IRecipeManager.crucibleRecipes){
 

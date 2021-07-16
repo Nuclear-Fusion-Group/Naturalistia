@@ -71,6 +71,10 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
         };
     }
 
+    public float getPercentage(){
+        return ((float) progress/(float) onGoingRecipe.timeTaken);
+    }
+
 
     public boolean collideWithItemEntity(ItemEntity itemEntity){
         ItemStack stack = itemEntity.getItem();
@@ -227,6 +231,14 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
         super.read(state, nbt);
         itemStackHandler.deserializeNBT(nbt.getCompound("items"));
 
+        if(!nbt.getString("onGoingRecipe").isEmpty()){
+            onGoingRecipe = IRecipeManager.getCrucibleRecipeFromId(new ResourceLocation(nbt.getString("onGoingRecipe")));
+        }
+        if(!nbt.getString("prevRecipe").isEmpty()){
+            prevRecipe = IRecipeManager.getCrucibleRecipeFromId(new ResourceLocation(nbt.getString("prevRecipe")));
+        }
+
+        progress = nbt.getInt("progress");
 
     }
 
@@ -234,6 +246,11 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
     public CompoundNBT write(CompoundNBT compound) {
         CompoundNBT nbt = super.write(compound);
         nbt.put("items", itemStackHandler.serializeNBT());
+        if(onGoingRecipe != null)
+            nbt.putString("onGoingRecipe", onGoingRecipe.recipeId.toString());
+        if(prevRecipe != null)
+            nbt.putString("prevRecipe", prevRecipe.recipeId.toString());
+        nbt.putInt("progress", progress);
         return nbt;
     }
 
