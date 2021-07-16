@@ -1,14 +1,9 @@
 package com.NuclearFusion.item.arms;
 
-import com.NuclearFusion.api.ModItemTier;
-import com.NuclearFusion.item.ItemRegister;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CampfireBlock;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.item.ToolItem;
+import net.minecraft.item.*;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
@@ -21,19 +16,18 @@ import net.minecraftforge.common.util.Constants;
 import javax.annotation.Nonnull;
 import java.util.Collections;
 
-//参考了mek的实现
-public class NimlosilverShovel extends ToolItem {
+public class NaturalistiaShovel extends ToolItem {
 
     private static Item.Properties addHarvestLevel(Item.Properties properties, int harvestLevel) {
         return properties.addToolType(ToolType.HOE, harvestLevel).addToolType(ToolType.PICKAXE, harvestLevel)
                 .addToolType(ToolType.SHOVEL, harvestLevel);
     }
 
-    private static int harvestLevel;
+    private int harvestLevel;
 
-    public NimlosilverShovel() {
-        super(1.5F, -3.0F, new ModItemTier(3, 1000, 10.0F, 1.5F, 30, ItemRegister.ITEM_INGOT_NIMLOSILVER.get()), Collections.emptySet(), addHarvestLevel(ItemRegister.defaultBuilder(), 3));
-        harvestLevel = 3;
+    public NaturalistiaShovel(float attackDamageIn, float attackSpeedIn, IItemTier tier, int harvestLevel, Properties builderIn) {
+        super(attackDamageIn, attackSpeedIn, tier,  Collections.emptySet(), addHarvestLevel(builderIn,harvestLevel));
+        this.harvestLevel = harvestLevel;
     }
 
     @Override
@@ -106,7 +100,7 @@ public class NimlosilverShovel extends ToolItem {
         return ActionResultType.func_233537_a_(world.isRemote);
     }
 
-    public static int getHarvestLevel() {
-        return harvestLevel;
+    public int getHarvestLevel() {
+        return this.harvestLevel;
     }
 }
