@@ -37,7 +37,7 @@ public class CrucibleRecipe {
      * @param inputFluid The input fluids
      * @param inputs The input items in crucible
      * @return The output fluid that the whole bunch of stuffs in the crucible tends to; returns null if no corresponding recipe is found.
-     * todo: Åä·½ÄÜ¹»ÔÚÓĞÕûÊı±¶µÄÔ­ÁÏµÄÇé¿öÏÂ´óÅúÁ¿ÖÆ×÷ÒºÌå
+     * todo: é…æ–¹èƒ½å¤Ÿåœ¨æœ‰æ•´æ•°å€çš„åŸæ–™çš„æƒ…å†µä¸‹å¤§æ‰¹é‡åˆ¶ä½œæ¶²ä½“
      */
     public static CrucibleRecipe getRecipe(FluidStack inputFluid, List<ItemStack> inputs){
 

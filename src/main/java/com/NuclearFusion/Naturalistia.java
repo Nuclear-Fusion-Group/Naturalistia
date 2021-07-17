@@ -5,6 +5,7 @@ import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.block.tileentity.TileEntityRegistry;
 import com.NuclearFusion.client.handler.HUDHandler;
 import com.NuclearFusion.client.renderer.TileBotanicCrucibleRenderer;
+import com.NuclearFusion.entity.EntityRegister;
 import com.NuclearFusion.item.ItemRegister;
 import com.NuclearFusion.recipe.IRecipeManager;
 import net.minecraft.block.Block;
@@ -55,6 +56,7 @@ public class Naturalistia {
         MinecraftForge.EVENT_BUS.addListener(HUDHandler::onDrawScreenPost);
         BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ItemRegister.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EntityRegister.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
         TileEntityRegistry.TILE_ENTITY_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
         EffectRegister.Effect.register(FMLJavaModLoadingContext.get().getModEventBus());
     }

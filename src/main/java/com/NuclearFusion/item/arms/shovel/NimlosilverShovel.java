@@ -4,7 +4,7 @@ import com.NuclearFusion.api.ModItemTier;
 import com.NuclearFusion.item.ItemRegister;
 import com.NuclearFusion.item.arms.NaturalistiaShovel;
 
-//²Î¿¼ÁËmekµÄÊµÏÖ
+//å‚è€ƒäº†mekçš„å®ç°
 public class NimlosilverShovel extends NaturalistiaShovel {
     public NimlosilverShovel() {
         super(1.5F, -3.0F, new ModItemTier(3, 1000, 10.0F, 1.5F, 30, ItemRegister.ITEM_INGOT_NIMLOSILVER.get()), 3, ItemRegister.defaultBuilder());

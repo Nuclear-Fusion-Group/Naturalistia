@@ -269,7 +269,7 @@ public class TileEntityBotanicCrucible extends TileFluidHandler implements ITick
 
     @Override
     public CompoundNBT getUpdateTag() {
-        return write(new CompoundNBT()); // ¼ÇµÃĞ´ÒªÍ¬²½µÄÊı¾İ½øÈ¥
+        return write(new CompoundNBT()); // todo è®°å¾—å†™è¦åŒæ­¥çš„æ•°æ®è¿›å»
     }
 
 
