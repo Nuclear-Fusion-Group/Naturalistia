@@ -1,6 +1,7 @@
 package com.NuclearFusion;
 
 import com.NuclearFusion.Effect.EffectRegister;
+import com.NuclearFusion.armor.RegisterArrmor;
 import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.block.tileentity.TileEntityRegistry;
 import com.NuclearFusion.client.handler.HUDHandler;
@@ -54,11 +55,14 @@ public class Naturalistia {
         MinecraftForge.EVENT_BUS.register(this);
 
         MinecraftForge.EVENT_BUS.addListener(HUDHandler::onDrawScreenPost);
+
         BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ItemRegister.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         EntityRegister.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
         TileEntityRegistry.TILE_ENTITY_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
         EffectRegister.Effect.register(FMLJavaModLoadingContext.get().getModEventBus());
+        RegisterArrmor.ARMORS.register(FMLJavaModLoadingContext.get().getModEventBus());
+
     }
 
     private void setup(final FMLCommonSetupEvent event) {
