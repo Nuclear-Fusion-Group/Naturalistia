@@ -2,6 +2,7 @@ package com.NuclearFusion.item.arms.crossbow;
 
 import com.NuclearFusion.entity.projectile.NimlosilverCrossbowArrowEntity;
 import com.NuclearFusion.item.ItemRegister;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
@@ -13,8 +14,11 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.vector.Quaternion;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.function.Predicate;
 
 /**
@@ -115,5 +119,12 @@ public class NimlosilverCrossbow extends CrossbowItem {
     @Override
     public Predicate<ItemStack> getInventoryAmmoPredicate() {
         return (itemStack) -> itemStack.getItem() == Items.ARROW;
+    }
+
+    //武器描述第NNNN次重写
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 }
