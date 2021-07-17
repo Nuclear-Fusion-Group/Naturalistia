@@ -16,6 +16,7 @@ import net.minecraftforge.common.util.Constants;
 import javax.annotation.Nonnull;
 import java.util.Collections;
 
+//参考了mek的实现
 public class NaturalistiaShovel extends ToolItem {
 
     private static Item.Properties addHarvestLevel(Item.Properties properties, int harvestLevel) {
