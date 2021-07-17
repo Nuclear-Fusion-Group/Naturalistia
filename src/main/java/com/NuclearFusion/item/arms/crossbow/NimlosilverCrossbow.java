@@ -121,7 +121,7 @@ public class NimlosilverCrossbow extends CrossbowItem {
         return (itemStack) -> itemStack.getItem() == Items.ARROW;
     }
 
-    //武器描述第NNNN次重写
+    //武器描述第NNNN次重写o(╥﹏╥)o
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {

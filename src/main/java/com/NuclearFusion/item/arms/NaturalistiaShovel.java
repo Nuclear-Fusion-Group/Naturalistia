@@ -111,7 +111,7 @@ public class NaturalistiaShovel extends ToolItem {
     public int getHarvestLevel() {
         return this.harvestLevel;
     }
-
+    //武器描述第NNNN次重写o(╥﹏╥)o
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
