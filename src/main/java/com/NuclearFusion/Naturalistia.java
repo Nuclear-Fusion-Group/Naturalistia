@@ -60,6 +60,7 @@ public class Naturalistia {
         EntityRegister.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
         TileEntityRegistry.TILE_ENTITY_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
         EffectRegister.Effect.register(FMLJavaModLoadingContext.get().getModEventBus());
+        MinecraftForge.EVENT_BUS.register(new com.NuclearFusion.event.TickPlay());
     }
 
     private void setup(final FMLCommonSetupEvent event) {
