@@ -2,6 +2,9 @@ package com.NuclearFusion.item.arms;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CampfireBlock;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.client.util.InputMappings;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.ActionResultType;
@@ -9,12 +12,17 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.common.util.Constants;
+import org.lwjgl.glfw.GLFW;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Collections;
+import java.util.List;
 
 //参考了mek的实现
 public class NaturalistiaShovel extends ToolItem {
@@ -104,4 +112,19 @@ public class NaturalistiaShovel extends ToolItem {
     public int getHarvestLevel() {
         return this.harvestLevel;
     }
+    //武器描述第NNNN次重写o(╥﹏╥)o
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        super.addInformation(stack, worldIn, tooltip, flagIn);
+        //.getWindow().getWindow();
+        long WINDOW = Minecraft.getInstance().getMainWindow().getHandle();
+        tooltip.add(new TranslationTextComponent("message.Shovel.describe"));
+        if (InputMappings.isKeyDown(WINDOW, GLFW.GLFW_KEY_LEFT_SHIFT) || InputMappings.isKeyDown(WINDOW, GLFW.GLFW_KEY_RIGHT_SHIFT)) {
+            tooltip.add(new TranslationTextComponent("message.Release_shift"));
+            tooltip.add(new TranslationTextComponent("message.Shovel.info"));
+        }else {
+            tooltip.add(new TranslationTextComponent("message.Press_shift"));
+        }
+    }
 }
+
