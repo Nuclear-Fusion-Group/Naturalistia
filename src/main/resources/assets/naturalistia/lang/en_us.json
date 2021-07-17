@@ -20,5 +20,6 @@
   "item.naturalistia.datura": "datura",
   "item.naturalistia.skyfaery": "skyfaery",
   "item.naturalistia.nimlosilver_sword": "nimlosilver_sword",
-  "item.naturalistia.nimlosilver_shovel": "nimlosilver_shovel"
+  "item.naturalistia.nimlosilver_shovel": "nimlosilver_shovel",
+  "Effect.naturalistia.effect_vertigo": "vertigo"
 }

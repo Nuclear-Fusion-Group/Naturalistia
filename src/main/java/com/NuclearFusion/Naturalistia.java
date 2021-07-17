@@ -1,5 +1,6 @@
 package com.NuclearFusion;
 
+import com.NuclearFusion.Effect.EffectRegister;
 import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.block.tileentity.TileEntityRegistry;
 import com.NuclearFusion.client.handler.HUDHandler;
@@ -55,6 +56,7 @@ public class Naturalistia {
         BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ItemRegister.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         TileEntityRegistry.TILE_ENTITY_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EffectRegister.Effect.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event) {
