@@ -21,5 +21,6 @@
   "item.naturalistia.skyfaery": "skyfaery",
   "item.naturalistia.nimlosilver_sword": "nimlosilver_sword",
   "item.naturalistia.nimlosilver_shovel": "nimlosilver_shovel",
-  "Effect.naturalistia.effect_vertigo": "vertigo"
+  "effect.naturalistia.effect_vertigo": "vertigo",
+  "item.naturalistia.chlorophyll_chain": "chlorophyll_chain"
 }

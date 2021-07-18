@@ -42,6 +42,8 @@ public class ItemRegister {
     public static final RegistryObject<Item> ITEM_INGOT_MALACHITE = ITEMS.register("copper", () -> new Item(defaultBuilder()));
     public static final RegistryObject<Item> ITEM_INGOT_NIMLOSILVER = ITEMS.register("nimlosilver", () -> new Item(defaultBuilder()));
     public static final RegistryObject<Item> ITEM_INGOT_CHLOROPHYLL = ITEMS.register("chlorophyll", () -> new Item(defaultBuilder()));
+    //叶绿锁链
+    public static final RegistryObject<Item> ITEM_CHLOROPHYLL_chain = ITEMS.register("chlorophyll_chain", () -> new Item(defaultBuilder()));
 
     public static final RegistryObject<Item> ITEM_ARMS_SWORD_NIMLOSILVER = ITEMS.register("nimlosilver_sword", NimlosilverSword::new);
     public static final RegistryObject<Item> ITEM_ARMS_SHOVEL_NIMLOSILVER = ITEMS.register("nimlosilver_shovel", NimlosilverShovel::new);
