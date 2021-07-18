@@ -24,6 +24,7 @@ import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
+//参考了mek的实现
 public class NaturalistiaShovel extends ToolItem {
 
     private static Item.Properties addHarvestLevel(Item.Properties properties, int harvestLevel) {

@@ -117,6 +117,11 @@ public class NimlosilverCrossbow extends CrossbowItem {
     }
 
     @Override
+    public Predicate<ItemStack> getAmmoPredicate() {
+        return getInventoryAmmoPredicate();
+    }
+
+    @Override
     public Predicate<ItemStack> getInventoryAmmoPredicate() {
         return (itemStack) -> itemStack.getItem() == Items.ARROW;
     }
