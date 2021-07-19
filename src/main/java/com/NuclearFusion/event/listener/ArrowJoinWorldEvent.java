@@ -1,6 +1,6 @@
 package com.NuclearFusion.event.listener;
 
-import com.NuclearFusion.Effect.EffectRegister;
+import com.NuclearFusion.effect.EffectRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;

@@ -1,4 +1,4 @@
-package com.NuclearFusion.Effect;
+package com.NuclearFusion.effect;
 
 import com.NuclearFusion.Naturalistia;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -7,8 +7,6 @@ import net.minecraft.potion.Effect;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.UUID;
 
 public class EffectRegister {
     public static final DeferredRegister<Effect> Effect = DeferredRegister.create(ForgeRegistries.POTIONS, Naturalistia.MOD_ID);

@@ -1,6 +1,6 @@
 package com.NuclearFusion;
 
-import com.NuclearFusion.Effect.EffectRegister;
+import com.NuclearFusion.effect.EffectRegister;
 import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.block.tileentity.TileEntityRegistry;
 import com.NuclearFusion.client.handler.HUDHandler;

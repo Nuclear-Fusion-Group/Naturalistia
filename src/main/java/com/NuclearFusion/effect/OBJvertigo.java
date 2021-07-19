@@ -1,4 +1,4 @@
-package com.NuclearFusion.Effect;
+package com.NuclearFusion.effect;
 
 import net.minecraft.potion.AttackDamageEffect;
 import net.minecraft.potion.EffectType;
