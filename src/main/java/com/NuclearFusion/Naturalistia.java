@@ -58,7 +58,7 @@ public class Naturalistia {
         ItemRegister.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         EntityRegister.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
         TileEntityRegistry.TILE_ENTITY_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
-        EffectRegister.Effect.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EffectRegister.EFFECT.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event) {

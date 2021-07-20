@@ -1,5 +1,7 @@
 {
   "itemGroup.naturalistia": "Naturalistia",
+  "message.Press_shift": "§7按下shift显示更多信息",
+  "message.Release_shift": "§7松开shift隐藏更多信息",
   "block.naturalistia.botanic_crucible": "botanic_crucible",
   "block.naturalistia.botanic_altar": "botanic_altar",
   "block.naturalistia.belladonna": "belladonna seed",
@@ -15,12 +17,18 @@
   "item.naturalistia.nimlosilver": "ingot_nimlosilver",
   "item.naturalistia.copper": "copper",
   "item.naturalistia.chlorophyll": "chlorophyll",
+  "item.naturalistia.chlorophyll_chain": "chlorophyll_chain",
   "item.naturalistia.belladonna": "belladonna",
   "item.naturalistia.chilipepper": "chilipepper",
   "item.naturalistia.datura": "datura",
   "item.naturalistia.skyfaery": "skyfaery",
   "item.naturalistia.nimlosilver_sword": "nimlosilver_sword",
   "item.naturalistia.nimlosilver_shovel": "nimlosilver_shovel",
+  "item.naturalistia.nimlosilver_crossbow": "nimlosilver_crossbow",
+  "message.Sword.describe": "§3用尼姆洛打造的银色的剑,可以对抗一切邪恶势力！",
+  "message.Sword.info": "§e对亡灵和节肢生物造成双倍伤害，右键可使用横扫",
+  "message.Shovel.describe": "§3多功能锹可以开采土壤和岩石，还可用于耕种",
+  "message.Shovel.info": "§e同时具备镐，锹，锄的能力，采掘等级和效率等同于铁",
   "effect.naturalistia.effect_vertigo": "vertigo",
-  "item.naturalistia.chlorophyll_chain": "chlorophyll_chain"
+  "effect.naturalistia.effect_armor_corrosion": "armor_corrosion"
 }
