@@ -11,14 +11,19 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
 /**
  * Part of the codes are written by Vazkii, in Botania repository on GitHub.
  */
+@Mod.EventBusSubscriber(value = Dist.CLIENT)
 public final class HUDHandler {
     private HUDHandler(){}
 
+    @SubscribeEvent
     public static void onDrawScreenPost(RenderGameOverlayEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
         IProfiler profiler = mc.getProfiler();
