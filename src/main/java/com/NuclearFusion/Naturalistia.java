@@ -3,7 +3,6 @@ package com.NuclearFusion;
 import com.NuclearFusion.effect.EffectRegister;
 import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.block.tileentity.TileEntityRegistry;
-import com.NuclearFusion.client.handler.HUDHandler;
 import com.NuclearFusion.client.renderer.TileBotanicCrucibleRenderer;
 import com.NuclearFusion.entity.EntityRegister;
 import com.NuclearFusion.item.ItemRegister;
@@ -53,11 +52,6 @@ public class Naturalistia {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-<<<<<<< HEAD
-=======
-        MinecraftForge.EVENT_BUS.addListener(HUDHandler::onDrawScreenPost);
-
->>>>>>> 1
         BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ItemRegister.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         EntityRegister.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());

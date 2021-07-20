@@ -3,7 +3,7 @@ package com.NuclearFusion.item;
 import com.NuclearFusion.item.arms.armor.Chlorophyll;
 import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.Naturalistia;
-import com.NuclearFusion.item.arms.armor.ChlorophyllChain;
+import com.NuclearFusion.item.arms.armor.ChlorophyllBoots;
 import com.NuclearFusion.item.arms.crossbow.NimlosilverCrossbow;
 import com.NuclearFusion.item.arms.shovel.NimlosilverShovel;
 import com.NuclearFusion.item.arms.sword.NimlosilverSword;
@@ -43,7 +43,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> ITEM_INGOT_NIMLOSILVER = ITEMS.register("nimlosilver", () -> new Item(defaultBuilder()));
     public static final RegistryObject<Item> ITEM_INGOT_CHLOROPHYLL = ITEMS.register("chlorophyll", () -> new Item(defaultBuilder()));
     //叶绿锁链
-    public static final RegistryObject<Item> ITEM_CHLOROPHYLL_chain = ITEMS.register("chlorophyll_chain", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_CHLOROPHYLL_CHAIN = ITEMS.register("chlorophyll_chain", () -> new Item(defaultBuilder()));
 
     public static final RegistryObject<Item> ITEM_ARMS_SWORD_NIMLOSILVER = ITEMS.register("nimlosilver_sword", NimlosilverSword::new);
     public static final RegistryObject<Item> ITEM_ARMS_SHOVEL_NIMLOSILVER = ITEMS.register("nimlosilver_shovel", NimlosilverShovel::new);
@@ -55,10 +55,10 @@ public class ItemRegister {
     public static final RegistryObject<Item> CHLOROPHYLL_BODY = ITEMS.register("chlorophyll_body",
             () -> new ArmorItem(new Chlorophyll(), EquipmentSlotType.CHEST, defaultBuilder()));
 
-    public static final RegistryObject<Item> CHLOROPHYLL_BOOTS = ITEMS.register("chlorophyll_boots",
+    public static final RegistryObject<Item> CHLOROPHYLL_LEGS = ITEMS.register("chlorophyll_legs",
             () -> new ArmorItem(new Chlorophyll(), EquipmentSlotType.LEGS, defaultBuilder()));
 
-    public static final RegistryObject<Item> CHLOROPHYLL_CHAIN = ITEMS.register("chlorophyll_chain", ChlorophyllChain::new);
+    public static final RegistryObject<Item> CHLOROPHYLL_BOOTS = ITEMS.register("chlorophyll_boots", ChlorophyllBoots::new);
 
     public static ItemGroup creativeTab = new ItemGroup(Naturalistia.MOD_ID) {
         @Nonnull

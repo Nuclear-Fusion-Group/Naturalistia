@@ -30,5 +30,9 @@
   "message.Shovel.describe": "§3多功能锹可以开采土壤和岩石，还可用于耕种",
   "message.Shovel.info": "§e同时具备镐，锹，锄的能力，采掘等级和效率等同于铁",
   "effect.naturalistia.effect_vertigo": "vertigo",
-  "effect.naturalistia.effect_armor_corrosion": "armor_corrosion"
+  "effect.naturalistia.effect_armor_corrosion": "armor_corrosion",
+  "item.naturalistia.chlorophyll_helmet": "chlorophyll_helmet",
+  "item.naturalistia.chlorophyll_body": "chlorophyll_body",
+  "item.naturalistia.chlorophyll_legs": "chlorophyll_legs",
+  "item.naturalistia.chlorophyll_boots": "chlorophyll_boots"
 }

@@ -10,11 +10,11 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.world.World;
 
-public class ChlorophyllChain extends ArmorItem {
+public class ChlorophyllBoots extends ArmorItem {
     private static final int MAX_TIME = 1 * 15;
     private int timer = 0;
 
-    public ChlorophyllChain() {
+    public ChlorophyllBoots() {
         super(new Chlorophyll(), EquipmentSlotType.FEET, ItemRegister.defaultBuilder());
     }
 
@@ -25,8 +25,8 @@ public class ChlorophyllChain extends ArmorItem {
             if (timer == MAX_TIME) {
                 if (player.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == ItemRegister.CHLOROPHYLL_HELMET.get()
                         && player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemRegister.CHLOROPHYLL_BODY.get()
-                        && player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemRegister.CHLOROPHYLL_BOOTS.get()
-                        && player.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegister.CHLOROPHYLL_CHAIN.get()
+                        && player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemRegister.CHLOROPHYLL_LEGS.get()
+                        && player.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegister.CHLOROPHYLL_BOOTS.get()
                 ) {
                     player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 5 * 20, 1));
                     if (worldIn.isDaytime()) {
