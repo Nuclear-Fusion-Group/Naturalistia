@@ -1,14 +1,14 @@
 package com.NuclearFusion.item;
 
+import com.NuclearFusion.item.arms.armor.Chlorophyll;
 import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.Naturalistia;
+import com.NuclearFusion.item.arms.armor.ChlorophyllChain;
 import com.NuclearFusion.item.arms.crossbow.NimlosilverCrossbow;
 import com.NuclearFusion.item.arms.shovel.NimlosilverShovel;
 import com.NuclearFusion.item.arms.sword.NimlosilverSword;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.*;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -48,6 +48,17 @@ public class ItemRegister {
     public static final RegistryObject<Item> ITEM_ARMS_SWORD_NIMLOSILVER = ITEMS.register("nimlosilver_sword", NimlosilverSword::new);
     public static final RegistryObject<Item> ITEM_ARMS_SHOVEL_NIMLOSILVER = ITEMS.register("nimlosilver_shovel", NimlosilverShovel::new);
     public static final RegistryObject<Item> ITEM_ARMS_CROSSBOW_NIMLOSILVER = ITEMS.register("nimlosilver_crossbow", NimlosilverCrossbow::new);
+
+    public static final RegistryObject<Item> CHLOROPHYLL_HELMET = ITEMS.register("chlorophyll_helmet",
+            () -> new ArmorItem(new Chlorophyll(), EquipmentSlotType.HEAD, defaultBuilder()));
+
+    public static final RegistryObject<Item> CHLOROPHYLL_BODY = ITEMS.register("chlorophyll_body",
+            () -> new ArmorItem(new Chlorophyll(), EquipmentSlotType.CHEST, defaultBuilder()));
+
+    public static final RegistryObject<Item> CHLOROPHYLL_BOOTS = ITEMS.register("chlorophyll_boots",
+            () -> new ArmorItem(new Chlorophyll(), EquipmentSlotType.LEGS, defaultBuilder()));
+
+    public static final RegistryObject<Item> CHLOROPHYLL_CHAIN = ITEMS.register("chlorophyll_chain", ChlorophyllChain::new);
 
     public static ItemGroup creativeTab = new ItemGroup(Naturalistia.MOD_ID) {
         @Nonnull

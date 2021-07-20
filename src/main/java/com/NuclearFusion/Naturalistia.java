@@ -53,6 +53,11 @@ public class Naturalistia {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
+<<<<<<< HEAD
+=======
+        MinecraftForge.EVENT_BUS.addListener(HUDHandler::onDrawScreenPost);
+
+>>>>>>> 1
         BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ItemRegister.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         EntityRegister.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());

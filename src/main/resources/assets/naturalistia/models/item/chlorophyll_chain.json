@@ -1,6 +1,10 @@
 {
   "parent": "item/generated",
   "textures": {
+<<<<<<< HEAD
     "layer0": "naturalistia:items/chlorophyll_chain"
+=======
+    "layer0": "naturalistia:items/chlorophyll_boots"
+>>>>>>> 1
   }
 }
