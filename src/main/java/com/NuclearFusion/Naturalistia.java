@@ -7,10 +7,12 @@ import com.NuclearFusion.client.renderer.TileBotanicCrucibleRenderer;
 import com.NuclearFusion.entity.EntityRegister;
 import com.NuclearFusion.item.ItemRegister;
 import com.NuclearFusion.recipe.IRecipeManager;
+import com.NuclearFusion.worldgen.biome.Biomekeys;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -52,11 +54,14 @@ public class Naturalistia {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        ItemRegister.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        EntityRegister.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
-        TileEntityRegistry.TILE_ENTITY_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
-        EffectRegister.EFFECT.register(FMLJavaModLoadingContext.get().getModEventBus());
+        IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        BlockRegistry.BLOCKS.register(modbus);
+        ItemRegister.ITEMS.register(modbus);
+        EntityRegister.ENTITIES.register(modbus);
+        TileEntityRegistry.TILE_ENTITY_REGISTRY.register(modbus);
+        EffectRegister.EFFECT.register(modbus);
+        Biomekeys.BIOMES.register(modbus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
