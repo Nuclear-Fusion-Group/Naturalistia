@@ -1,8 +1,8 @@
 package com.NuclearFusion.item;
 
-import com.NuclearFusion.item.arms.armor.Chlorophyll;
-import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.Naturalistia;
+import com.NuclearFusion.block.BlockRegistry;
+import com.NuclearFusion.item.arms.armor.Chlorophyll;
 import com.NuclearFusion.item.arms.armor.ChlorophyllBoots;
 import com.NuclearFusion.item.arms.crossbow.NimlosilverCrossbow;
 import com.NuclearFusion.item.arms.shovel.NimlosilverShovel;

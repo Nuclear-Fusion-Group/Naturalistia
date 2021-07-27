@@ -1,7 +1,5 @@
 package com.NuclearFusion.datagen.LootTable.Block;
 
-import com.NuclearFusion.api.TileEntityProvider;
-import com.NuclearFusion.api.NBTConstants;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.block.Block;
 import net.minecraft.block.CropsBlock;
@@ -11,12 +9,9 @@ import net.minecraft.loot.ItemLootEntry;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.functions.CopyNbt;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
