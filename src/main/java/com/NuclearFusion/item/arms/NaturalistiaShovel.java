@@ -112,19 +112,6 @@ public class NaturalistiaShovel extends ToolItem {
     public int getHarvestLevel() {
         return this.harvestLevel;
     }
-    //武器描述第NNNN次重写o(╥﹏╥)o
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
-        //.getWindow().getWindow();
-        long WINDOW = Minecraft.getInstance().getMainWindow().getHandle();
-        tooltip.add(new TranslationTextComponent("message.Shovel.describe"));
-        if (InputMappings.isKeyDown(WINDOW, GLFW.GLFW_KEY_LEFT_SHIFT) || InputMappings.isKeyDown(WINDOW, GLFW.GLFW_KEY_RIGHT_SHIFT)) {
-            tooltip.add(new TranslationTextComponent("message.Release_shift"));
-            tooltip.add(new TranslationTextComponent("message.Shovel.info"));
-        }else {
-            tooltip.add(new TranslationTextComponent("message.Press_shift"));
-        }
-    }
+
 }
 
