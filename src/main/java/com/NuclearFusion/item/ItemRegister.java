@@ -5,6 +5,7 @@ import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.item.arms.armor.Chlorophyll;
 import com.NuclearFusion.item.arms.armor.ChlorophyllBoots;
 import com.NuclearFusion.item.arms.crossbow.NimlosilverCrossbow;
+import com.NuclearFusion.item.arms.mace.NimlosilverMace;
 import com.NuclearFusion.item.arms.shovel.NimlosilverShovel;
 import com.NuclearFusion.item.arms.sword.NimlosilverSword;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -47,6 +48,9 @@ public class ItemRegister {
 
     public static final RegistryObject<Item> ITEM_ARMS_SWORD_NIMLOSILVER = ITEMS.register("nimlosilver_sword", NimlosilverSword::new);
     public static final RegistryObject<Item> ITEM_ARMS_SHOVEL_NIMLOSILVER = ITEMS.register("nimlosilver_shovel", NimlosilverShovel::new);
+    //狼牙棒
+    public static final RegistryObject<Item> ITEM_ARMS_SHOVEL_MACE = ITEMS.register("nimlosilver_mace", NimlosilverMace::new);
+
     public static final RegistryObject<Item> ITEM_ARMS_CROSSBOW_NIMLOSILVER = ITEMS.register("nimlosilver_crossbow", NimlosilverCrossbow::new);
 
     public static final RegistryObject<Item> CHLOROPHYLL_HELMET = ITEMS.register("chlorophyll_helmet",
