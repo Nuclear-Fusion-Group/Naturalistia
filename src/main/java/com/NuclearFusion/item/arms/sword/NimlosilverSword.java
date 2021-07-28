@@ -40,7 +40,7 @@ public class NimlosilverSword extends SwordItem {
         if (InputMappings.isKeyDown(WINDOW, GLFW.GLFW_KEY_LEFT_SHIFT) || InputMappings.isKeyDown(WINDOW, GLFW.GLFW_KEY_RIGHT_SHIFT)) {
             tooltip.add(new TranslationTextComponent("message.Release_shift"));
             tooltip.add(new TranslationTextComponent("message.Sword.info"));
-        }else {
+        } else {
             tooltip.add(new TranslationTextComponent("message.Press_shift"));
         }
     }

@@ -35,7 +35,7 @@ public class NaturalistiaShovel extends ToolItem {
     private int harvestLevel;
 
     public NaturalistiaShovel(float attackDamageIn, float attackSpeedIn, IItemTier tier, int harvestLevel, Properties builderIn) {
-        super(attackDamageIn, attackSpeedIn, tier,  Collections.emptySet(), addHarvestLevel(builderIn,harvestLevel));
+        super(attackDamageIn, attackSpeedIn, tier, Collections.emptySet(), addHarvestLevel(builderIn, harvestLevel));
         this.harvestLevel = harvestLevel;
     }
 
@@ -80,14 +80,14 @@ public class NaturalistiaShovel extends ToolItem {
                 resultToSet = blockState.with(CampfireBlock.LIT, false);
             }
         } else {
-            if (context.getFace() == Direction.DOWN){
+            if (context.getFace() == Direction.DOWN) {
                 return ActionResultType.PASS;
             }
             //变耕地
-            if (resultToSet!=null && world.isAirBlock(blockPos.up())){
-                world.playSound(player,blockPos,SoundEvents.ITEM_HOE_TILL,SoundCategory.BLOCKS,1.0F,1.0F);
-                if (!world.isRemote){
-                    world.setBlockState(blockPos,resultToSet, Constants.BlockFlags.DEFAULT_AND_RERENDER);
+            if (resultToSet != null && world.isAirBlock(blockPos.up())) {
+                world.playSound(player, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                if (!world.isRemote) {
+                    world.setBlockState(blockPos, resultToSet, Constants.BlockFlags.DEFAULT_AND_RERENDER);
                     if (player != null) {
                         itemStack.damageItem(1, player, onBroken -> onBroken.sendBreakAnimation(context.getHand()));
                         return ActionResultType.PASS;
