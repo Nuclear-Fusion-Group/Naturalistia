@@ -4,10 +4,7 @@ import com.NuclearFusion.Naturalistia;
 import com.NuclearFusion.block.BlockRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DirectoryCache;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.CrossbowItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ToolItem;
+import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
@@ -79,7 +76,7 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
 
     private void registerItem(Set<Item> items) {
         items.removeAll(items.stream().filter(i -> i instanceof BlockItem || i instanceof CrossbowItem).collect(Collectors.toSet()));
-        items.stream().filter(i -> i instanceof ToolItem).forEach(this::handheldItem);
         items.forEach(this::generatedItem);
+        items.stream().filter(i -> i instanceof ToolItem).forEach(this::handheldItem);
     }
 }
