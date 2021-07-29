@@ -1,8 +1,8 @@
-package com.NuclearFusion.item.arms.shovel;
+package com.NuclearFusion.item.arms.tool.shovel;
 
 import com.NuclearFusion.api.ModItemTier;
 import com.NuclearFusion.item.ItemRegister;
-import com.NuclearFusion.item.arms.NaturalistiaShovel;
+import com.NuclearFusion.item.arms.tool.NaturalistiaShovel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.client.util.InputMappings;

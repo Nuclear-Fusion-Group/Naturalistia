@@ -1,9 +1,8 @@
-package com.NuclearFusion.item.arms.hoe;
+package com.NuclearFusion.item.arms.tool.hoe;
 
 import com.NuclearFusion.api.ModItemTier;
 import com.NuclearFusion.item.ItemRegister;
-import com.NuclearFusion.item.arms.NaturalistiaShovel;
-import net.minecraft.item.IItemTier;
+import com.NuclearFusion.item.arms.tool.NaturalistiaShovel;
 
 public class ChlorophyllHoe extends NaturalistiaShovel {
     public ChlorophyllHoe() {

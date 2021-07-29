@@ -1,4 +1,4 @@
-package com.NuclearFusion.item.arms.sword;
+package com.NuclearFusion.item.arms.tool.sword;
 
 import com.NuclearFusion.api.ModItemTier;
 import com.NuclearFusion.item.ItemRegister;

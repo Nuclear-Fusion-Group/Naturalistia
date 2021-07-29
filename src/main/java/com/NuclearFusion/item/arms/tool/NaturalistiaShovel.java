@@ -1,4 +1,4 @@
-package com.NuclearFusion.item.arms;
+package com.NuclearFusion.item.arms.tool;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CampfireBlock;

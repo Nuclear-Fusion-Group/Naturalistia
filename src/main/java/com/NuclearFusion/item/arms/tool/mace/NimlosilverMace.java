@@ -1,9 +1,9 @@
-package com.NuclearFusion.item.arms.mace;
+package com.NuclearFusion.item.arms.tool.mace;
 
 
 import com.NuclearFusion.api.ModItemTier;
 import com.NuclearFusion.item.ItemRegister;
-import com.NuclearFusion.item.arms.NaturalistiaShovel;
+import com.NuclearFusion.item.arms.tool.NaturalistiaShovel;
 
 public class NimlosilverMace extends NaturalistiaShovel {
 
