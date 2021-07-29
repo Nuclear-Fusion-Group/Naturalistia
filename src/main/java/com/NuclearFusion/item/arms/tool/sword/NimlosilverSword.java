@@ -1,6 +1,7 @@
 package com.NuclearFusion.item.arms.tool.sword;
 
 import com.NuclearFusion.api.ModItemTier;
+import com.NuclearFusion.api.NimlosilverBuff;
 import com.NuclearFusion.item.ItemRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
@@ -18,18 +19,11 @@ import org.lwjgl.glfw.GLFW;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class NimlosilverSword extends SwordItem {
+public class NimlosilverSword extends NimlosilverBuff {
 
     public NimlosilverSword() {
         super(new ModItemTier(3, 250, 10.0F, 3.0F, 30, ItemRegister.ITEM_INGOT_NIMLOSILVER.get()), 1, -2.4F, ItemRegister.defaultBuilder());
     }
-
-    @Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        target.attackEntityFrom(DamageSource.DRAGON_BREATH, EnchantmentHelper.getSweepingDamageRatio(attacker) * 5);
-        return super.hitEntity(stack, target, attacker);
-    }
-
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
