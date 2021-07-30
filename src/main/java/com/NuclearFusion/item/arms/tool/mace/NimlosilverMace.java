@@ -16,10 +16,10 @@ import net.minecraft.util.registry.Registry;
 
 public class NimlosilverMace extends NimlosilverBuff {
     public NimlosilverMace() {
-        super(new ModItemTier(3, 300, 7.5F, 5.5F, 30, ItemRegister.ITEM_INGOT_NIMLOSILVER.get()), 3, -3.0F, new Item.Properties());
+        super(new ModItemTier(3, 300, 7.5F, 5.5F, 30, ItemRegister.ITEM_INGOT_NIMLOSILVER.get()), 3, -3.0F, ItemRegister.defaultBuilder());
     }
 
-    //TODO Èç¹ûºóÃæĞèÒª×Ô´ø¸½Ä§µÄÎïÆ·ºÜ¶àµÄ»° ¿ÉÒÔ¿¼ÂÇ½«¹¦ÄÜ¶ÀÁ¢³öÈ¥
+    //TODO å¦‚æœåé¢éœ€è¦è‡ªå¸¦é™„é­”çš„ç‰©å“å¾ˆå¤šçš„è¯ å¯ä»¥è€ƒè™‘å°†åŠŸèƒ½ç‹¬ç«‹å‡ºå»
     @Override
     public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
         if (group == ItemRegister.creativeTab) {
@@ -29,7 +29,7 @@ public class NimlosilverMace extends NimlosilverBuff {
             ListNBT listNBT = new ListNBT();
             EnchantmentData stackIn = new EnchantmentData(Enchantments.KNOCKBACK, 1);
 
-            //Ìí¼Ó¸½Ä§ÓëµÈ¼¶
+            //æ·»åŠ é™„é­”ä¸ç­‰çº§
             nbt.putString("id", String.valueOf(Registry.ENCHANTMENT.getKey(stackIn.enchantment)));
             nbt.putShort("lvl", (short) stackIn.enchantmentLevel);
 
@@ -38,7 +38,6 @@ public class NimlosilverMace extends NimlosilverBuff {
 
             items.add(itemstack);
         }
-        super.fillItemGroup(group, items);
     }
 
 }
