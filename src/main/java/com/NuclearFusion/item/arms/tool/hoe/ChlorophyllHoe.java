@@ -2,7 +2,6 @@ package com.NuclearFusion.item.arms.tool.hoe;
 
 import com.NuclearFusion.api.ModItemTier;
 import com.NuclearFusion.item.ItemRegister;
-import com.NuclearFusion.item.arms.tool.NaturalistiaShovel;
 import net.minecraft.item.SwordItem;
 
 public class ChlorophyllHoe extends SwordItem {

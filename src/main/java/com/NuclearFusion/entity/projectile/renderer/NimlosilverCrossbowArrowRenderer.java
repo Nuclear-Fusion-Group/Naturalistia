@@ -5,7 +5,6 @@ import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.TippedArrowRenderer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.datafix.fixes.TippedArrow;
 
 /**
  * @author DustW

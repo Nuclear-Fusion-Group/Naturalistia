@@ -50,7 +50,7 @@ public class ItemRegister {
 
     public static final RegistryObject<Item> ITEM_ARMS_SWORD_NIMLOSILVER = ITEMS.register("nimlosilver_sword", NimlosilverSword::new);
     public static final RegistryObject<Item> ITEM_ARMS_SHOVEL_NIMLOSILVER = ITEMS.register("nimlosilver_shovel", NimlosilverShovel::new);
-    //狼牙棒
+    /** 狼牙棒 */
     public static final RegistryObject<Item> ITEM_ARMS_SHOVEL_MACE = ITEMS.register("nimlosilver_mace", NimlosilverMace::new);
     //短矛
     public static final RegistryObject<Item> ITEM_ARMS_SHOVEL_SPEAR = ITEMS.register("nimlosilver_spear", NimlosilverSpear::new);

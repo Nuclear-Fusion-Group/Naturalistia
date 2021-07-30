@@ -2,11 +2,8 @@ package com.NuclearFusion.entity;
 
 import com.NuclearFusion.Naturalistia;
 import com.NuclearFusion.entity.projectile.NimlosilverCrossbowArrowEntity;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.projectile.ArrowEntity;
-import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

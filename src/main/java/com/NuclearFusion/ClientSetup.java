@@ -1,17 +1,12 @@
 package com.NuclearFusion;
 
 import com.NuclearFusion.entity.EntityRegister;
-import com.NuclearFusion.entity.projectile.NimlosilverCrossbowArrowEntity;
 import com.NuclearFusion.entity.projectile.renderer.NimlosilverCrossbowArrowRenderer;
 import com.NuclearFusion.item.ItemRegister;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.TippedArrowRenderer;
-import net.minecraft.entity.ai.brain.memory.MemoryModuleType;
 import net.minecraft.item.CrossbowItem;
 import net.minecraft.item.ItemModelsProperties;
-import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
