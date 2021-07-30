@@ -16,7 +16,7 @@ import net.minecraft.util.registry.Registry;
 
 public class NimlosilverMace extends NimlosilverBuff {
     public NimlosilverMace() {
-        super(new ModItemTier(3, 300, 7.5F, 5.5F, 30, ItemRegister.ITEM_INGOT_NIMLOSILVER.get()), 3, -3.0F, new Item.Properties().group(ItemRegister.creativeTab));
+        super(new ModItemTier(3, 300, 7.5F, 5.5F, 30, ItemRegister.ITEM_INGOT_NIMLOSILVER.get()), 3, -3.0F, ItemRegister.defaultBuilder());
     }
 
     //TODO 如果后面需要自带附魔的物品很多的话 可以考虑将功能独立出去
@@ -38,7 +38,6 @@ public class NimlosilverMace extends NimlosilverBuff {
 
             items.add(itemstack);
         }
-        super.fillItemGroup(group, items);
     }
 
 }

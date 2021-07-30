@@ -3,9 +3,6 @@ package com.NuclearFusion.item.arms.tool.spear;
 import com.NuclearFusion.api.ModItemTier;
 import com.NuclearFusion.api.NimlosilverBuff;
 import com.NuclearFusion.item.ItemRegister;
-import com.NuclearFusion.item.arms.tool.NaturalistiaShovel;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolItem;
 
 public class NimlosilverSpear extends NimlosilverBuff {
     public NimlosilverSpear() {
