@@ -32,8 +32,8 @@ public class NimlosilverMace extends NimlosilverBuff {
     }
 
     @Override
-    public void onCreated(ItemStack p_77622_1_, World p_77622_2_, PlayerEntity p_77622_3_) {
-        p_77622_1_.addEnchantment(Enchantments.KNOCKBACK, 1);
-        super.onCreated(p_77622_1_, p_77622_2_, p_77622_3_);
+    public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn) {
+        stack.addEnchantment(Enchantments.KNOCKBACK, 1);
+        super.onCreated(stack, worldIn, playerIn);
     }
 }
