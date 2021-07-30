@@ -11,7 +11,7 @@ public class ChlorophyllHoe extends SwordItem {
     }
 
     /*
-      TODO �Ҽ�����������Ӱ��ı�ը���ӣ���ը���ӻ���������˺�100%��С��Χ�˺�
-      ��ʾ��䣺Ͷ����ը����
+      TODO 右键发射受重力影响的爆炸种子，爆炸种子会造成武器伤害100%的小范围伤害
+      提示语句：投出爆炸种子
      */
 }

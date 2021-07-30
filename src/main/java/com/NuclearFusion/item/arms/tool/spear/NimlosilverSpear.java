@@ -11,5 +11,5 @@ public class NimlosilverSpear extends NimlosilverBuff {
     public NimlosilverSpear() {
         super(new ModItemTier(3, 250, 7.5F, 5.5F, 30, ItemRegister.ITEM_INGOT_NIMLOSILVER.get()), 3, -2.8F, ItemRegister.defaultBuilder());
     }
-    //TODO 1.5±¶¹¥»÷¾àÀë
+    //TODO 1.5å€æ”»å‡»è·ç¦»
 }
