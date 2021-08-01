@@ -1,6 +1,7 @@
 package com.NuclearFusion;
 
 import com.NuclearFusion.entity.EntityRegister;
+import com.NuclearFusion.entity.projectile.renderer.BombSeedEntityRenderer;
 import com.NuclearFusion.entity.projectile.renderer.NimlosilverCrossbowArrowRenderer;
 import com.NuclearFusion.item.ItemRegister;
 import net.minecraft.client.Minecraft;
@@ -30,6 +31,7 @@ public class ClientSetup {
         EntityRendererManager manager = Minecraft.getInstance().getRenderManager();
 
         manager.register(EntityRegister.NIMLOSILVER_CROSSBOW_ARROW.get(), new NimlosilverCrossbowArrowRenderer(manager));
+        manager.register(EntityRegister.BOMB_SEED_ENTITY.get(), new BombSeedEntityRenderer(manager));
     }
 
     static void registerProperties() {
