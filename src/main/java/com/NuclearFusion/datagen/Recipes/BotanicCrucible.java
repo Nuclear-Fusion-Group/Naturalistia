@@ -1,7 +1,6 @@
 package com.NuclearFusion.datagen.Recipes;
 
 import com.NuclearFusion.item.ItemRegister;
-import com.NuclearFusion.item.arms.tool.mace.NimlosilverMace;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;

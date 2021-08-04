@@ -7,7 +7,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import slimeknights.mantle.util.ItemStackList;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class CrucibleRecipe {

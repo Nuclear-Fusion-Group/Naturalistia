@@ -1,7 +1,7 @@
 package com.NuclearFusion.event;
 
-import com.NuclearFusion.datagen.LootTable.LootProvider;
 import com.NuclearFusion.Naturalistia;
+import com.NuclearFusion.datagen.LootTable.LootProvider;
 import com.NuclearFusion.datagen.Recipes.BotanicCrucible;
 import com.NuclearFusion.datagen.model.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;

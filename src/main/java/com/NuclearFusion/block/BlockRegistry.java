@@ -1,10 +1,10 @@
 package com.NuclearFusion.block;
 
+import com.NuclearFusion.Naturalistia;
 import com.NuclearFusion.block.crop.Belladonna;
 import com.NuclearFusion.block.crop.Chilipepper;
 import com.NuclearFusion.block.crop.Datura;
 import com.NuclearFusion.block.crop.Skyfaery;
-import com.NuclearFusion.Naturalistia;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

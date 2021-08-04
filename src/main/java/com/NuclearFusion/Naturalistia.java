@@ -1,9 +1,9 @@
 package com.NuclearFusion;
 
-import com.NuclearFusion.effect.EffectRegister;
 import com.NuclearFusion.block.BlockRegistry;
 import com.NuclearFusion.block.tileentity.TileEntityRegistry;
 import com.NuclearFusion.client.renderer.TileBotanicCrucibleRenderer;
+import com.NuclearFusion.effect.EffectRegister;
 import com.NuclearFusion.entity.EntityRegister;
 import com.NuclearFusion.item.ItemRegister;
 import com.NuclearFusion.recipe.IRecipeManager;
