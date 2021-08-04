@@ -24,6 +24,13 @@ public class ItemRegister {
     public static final RegistryObject<Item> ITEM_BOTANIC_CRUCIBLE = ITEMS.register("botanic_crucible", () -> new BlockItem(BlockRegistry.BLOCK_BOTANIC_CRUCIBLE.get(), defaultBuilder()));
     public static final RegistryObject<Item> ITEM_BOTANIC_ALTAR = ITEMS.register("botanic_altar", () -> new BlockItem(BlockRegistry.BLOCK_BOTANIC_ALTAR.get(), defaultBuilder()));
 
+    public static final RegistryObject<Item> ITEM_EBONY_STICK = ITEMS.register("ebony_stick", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_MANA_DIAMOND = ITEMS.register("mana_diamond", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_RIB = ITEMS.register("rib", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_SILVER_KEY = ITEMS.register("silver_key", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_SPIRIT_BALL = ITEMS.register("spirit_ball", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> ITEM_ZOMBIE_HEART = ITEMS.register("zombie_heart", () -> new Item(defaultBuilder()));
+
     public static final RegistryObject<Item> ITEM_BELLADONNA = ITEMS.register("belladonna", () -> new Item(defaultBuilder()));
     public static final RegistryObject<Item> ITEM_CHILIPEPPER = ITEMS.register("chilipepper", () -> new Item(defaultBuilder()));
     public static final RegistryObject<Item> ITEM_DATURA = ITEMS.register("datura", () -> new Item(defaultBuilder()));
