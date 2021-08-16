@@ -16,7 +16,6 @@ public class NimlosilverMace extends NimlosilverBuff {
         super(new ModItemTier(3, 300, 7.5F, 5.5F, 30, ItemRegister.ITEM_INGOT_NIMLOSILVER.get()), 3, -3.0F, ItemRegister.defaultBuilder());
     }
 
-    //TODO 如果后面需要自带附魔的物品很多的话 可以考虑将功能独立出去
     @Override
     public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
         if (group == ItemRegister.creativeTab) {

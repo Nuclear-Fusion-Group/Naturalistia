@@ -34,6 +34,8 @@
   "item.naturalistia.nimlosilver_mace": "nimlosilver_mace",
   "item.naturalistia.nimlosilver_spear": "nimlosilver_spear",
   "item.naturalistia.chlorophyll_hoe": "chlorophyll_hoe",
+  "item.naturalistia.chlorophyll_pickaxe": "chlorophyll_pickaxe",
+  "item.naturalistia.chlorophyll_shovel": "chlorophyll_shovel",
   "message.Sword.describe": "§3用尼姆洛打造的银色的剑,可以对抗一切邪恶势力！",
   "message.Sword.info": "§e对亡灵和节肢生物造成双倍伤害，右键可使用横扫",
   "message.Shovel.describe": "§3多功能锹可以开采土壤和岩石，还可用于耕种",
