@@ -30,6 +30,11 @@ import java.util.function.Predicate;
  * @author DustW
  */
 public class AttackUtils {
+    /**
+     * 更长的攻击距离
+     * @param player 攻击者
+     * @param range  攻击的距离
+     */
     public static void longerAttack(PlayerEntity player, double range) {
         Optional<EntityRayTraceResult> a = Optional.ofNullable(rayTraceEntities(player, range, player.getPositionVec()));
 
@@ -68,6 +73,12 @@ public class AttackUtils {
         return entity2 == null ? null : new EntityRayTraceResult(entity2);
     }
 
+    /**
+     * 获取受到生物能力加成的武器的伤害
+     * @param itemStack  武器
+     * @param entity     玩家
+     * @return           伤害的数值
+     */
     public static double getAttackDamage(ItemStack itemStack, @Nullable LivingEntity entity) {
         double attackDamage = 0;
         Multimap<Attribute, AttributeModifier> multimap = itemStack.getAttributeModifiers(EquipmentSlotType.MAINHAND);
