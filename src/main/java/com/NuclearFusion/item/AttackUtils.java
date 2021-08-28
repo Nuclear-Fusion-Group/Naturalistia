@@ -32,12 +32,14 @@ import java.util.function.Predicate;
 public class AttackUtils {
     /**
      * 更长的攻击距离
-     * @param player 攻击者
-     * @param range  攻击的距离
+     * @param player       攻击者
+     * @param range        攻击的距离
+     * @param damageSource 攻击类型
+     * @param damage       伤害的值
      */
-    public static void longerAttack(PlayerEntity player, double range, float damage) {
+    public static void longerAttack(PlayerEntity player, double range, DamageSource damageSource, float damage) {
         Optional.ofNullable(rayTraceEntities(player, range, player.getPositionVec())).ifPresent((rayTraceResult) -> {
-            rayTraceResult.getEntity().attackEntityFrom(DamageSource.ANVIL, damage);
+            rayTraceResult.getEntity().attackEntityFrom(damageSource, damage);
         });
     }
 
