@@ -33,7 +33,7 @@ public class ExplosionUtils {
             world.addParticle(ParticleTypes.EXPLOSION, pos.x, pos.y, pos.z, 1.0D, 0.0D, 0.0D);
         } else {
             List<LivingEntity> list = world.getEntitiesWithinAABB(LivingEntity.class,
-                    new AxisAlignedBB(pos.add(range, range, range), pos.subtract(range, range, range)));
+                    new AxisAlignedBB(pos.add(range, range, range), pos.subtract(range, range, range)), (e) -> e != player);
             list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeExplosionDamage(player), damage));
         }
     }

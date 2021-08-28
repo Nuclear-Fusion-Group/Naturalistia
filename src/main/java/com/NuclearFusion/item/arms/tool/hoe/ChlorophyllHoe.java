@@ -27,7 +27,7 @@ public class ChlorophyllHoe extends SwordItem {
 
             world.addEntity(bombSeedEntity);
 
-            player.getCooldownTracker().setCooldown(player.getHeldItem(hand).getItem(), 4);
+            player.getCooldownTracker().setCooldown(player.getHeldItem(hand).getItem(), 20);
         }
         return super.onItemRightClick(world, player, hand);
     }

@@ -38,9 +38,12 @@ public class AttackUtils {
      * @param damage       伤害的值
      */
     public static void longerAttack(PlayerEntity player, double range, DamageSource damageSource, float damage) {
-        Optional.ofNullable(rayTraceEntities(player, range, player.getPositionVec())).ifPresent((rayTraceResult) -> {
-            rayTraceResult.getEntity().attackEntityFrom(damageSource, damage);
-        });
+        EntityRayTraceResult rayResult = rayTraceEntities(player, range, player.getPositionVec());
+        if (rayResult != null) {
+            Entity entity = rayResult.getEntity();
+            boolean a = entity.attackEntityFrom(damageSource, damage);
+            int b = 1;
+        }
     }
 
     @Nullable
@@ -52,7 +55,7 @@ public class AttackUtils {
     }
 
     @Nullable
-    public static EntityRayTraceResult rayTraceEntities(World world, Entity entity, Vector3d vector3d1, Vector3d vector3d, AxisAlignedBB axisAlignedBB) {
+    protected static EntityRayTraceResult rayTraceEntities(World world, Entity entity, Vector3d vector3d1, Vector3d vector3d, AxisAlignedBB axisAlignedBB) {
         double d0 = Integer.MAX_VALUE;
         Entity entity2 = null;
 
@@ -79,7 +82,7 @@ public class AttackUtils {
      * @param entity     玩家
      * @return           伤害的数值
      */
-    public static double getAttackDamage(ItemStack itemStack, @Nullable LivingEntity entity) {
+    public static float getAttackDamage(ItemStack itemStack, @Nullable LivingEntity entity) {
         double attackDamage = 0;
         Multimap<Attribute, AttributeModifier> multimap = itemStack.getAttributeModifiers(EquipmentSlotType.MAINHAND);
 
@@ -95,6 +98,6 @@ public class AttackUtils {
             }
         }
 
-        return attackDamage;
+        return (float) attackDamage;
     }
 }

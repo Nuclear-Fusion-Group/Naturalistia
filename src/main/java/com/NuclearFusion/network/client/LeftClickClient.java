@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 /**
  * @author DustW
  */
-public class LeftClickClient implements IClientMessage{
+public class LeftClickClient implements IClientMessage {
     public static void encode(LeftClickClient msg, PacketBuffer packetBuffer) {
 
     }
@@ -23,7 +23,7 @@ public class LeftClickClient implements IClientMessage{
 
     public static void handle(LeftClickClient msg, Supplier<NetworkEvent.Context> contextSupplier) {
         contextSupplier.get().enqueueWork(() -> {
-            PlayerEntity player = (PlayerEntity) Minecraft.getInstance().player;
+            PlayerEntity player = contextSupplier.get().getSender();
             ItemStack itemStack = player.getHeldItemMainhand();
             if (itemStack.getItem() instanceof ILeftClick) {
                 ((ILeftClick) itemStack.getItem()).onLeftClick(itemStack, player);

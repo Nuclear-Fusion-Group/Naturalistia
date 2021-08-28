@@ -5,8 +5,13 @@ import com.NuclearFusion.api.NimlosilverBuff;
 import com.NuclearFusion.item.AttackUtils;
 import com.NuclearFusion.item.ItemRegister;
 import com.NuclearFusion.item.interfaces.ILeftClick;
+import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntityDamageSource;
+import net.minecraftforge.common.ForgeMod;
 
 public class NimlosilverSpear extends NimlosilverBuff implements ILeftClick {
     public NimlosilverSpear() {
@@ -15,6 +20,7 @@ public class NimlosilverSpear extends NimlosilverBuff implements ILeftClick {
 
     @Override
     public void onLeftClick(ItemStack stack, PlayerEntity player) {
-        //TODO 1.5倍攻击距离
+        double attackRange = player.getAttribute(ForgeMod.REACH_DISTANCE.get()).getBaseValue();
+        AttackUtils.longerAttack(player, attackRange * 1.5, DamageSource.causePlayerDamage(player), AttackUtils.getAttackDamage(stack, player));
     }
 }
