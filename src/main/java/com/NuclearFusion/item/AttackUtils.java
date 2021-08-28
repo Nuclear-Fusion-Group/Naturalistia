@@ -35,11 +35,9 @@ public class AttackUtils {
      * @param player 攻击者
      * @param range  攻击的距离
      */
-    public static void longerAttack(PlayerEntity player, double range) {
-        Optional<EntityRayTraceResult> a = Optional.ofNullable(rayTraceEntities(player, range, player.getPositionVec()));
-
-        a.ifPresent((rayTraceResult) -> {
-            rayTraceResult.getEntity().attackEntityFrom(DamageSource.ANVIL, 12);
+    public static void longerAttack(PlayerEntity player, double range, float damage) {
+        Optional.ofNullable(rayTraceEntities(player, range, player.getPositionVec())).ifPresent((rayTraceResult) -> {
+            rayTraceResult.getEntity().attackEntityFrom(DamageSource.ANVIL, damage);
         });
     }
 
