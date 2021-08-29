@@ -32,17 +32,16 @@ import java.util.function.Predicate;
 public class AttackUtils {
     /**
      * 更长的攻击距离
-     * @param player       攻击者
-     * @param range        攻击的距离
-     * @param damageSource 攻击类型
-     * @param damage       伤害的值
+     *
+     * @param player 攻击者
+     * @param range  攻击的距离
+     * @param damage 伤害的值
      */
-    public static void longerAttack(PlayerEntity player, double range, DamageSource damageSource, float damage) {
+    public static void longerAttack(PlayerEntity player, double range, float damage) {
         EntityRayTraceResult rayResult = rayTraceEntities(player, range, player.getPositionVec());
         if (rayResult != null) {
             Entity entity = rayResult.getEntity();
-            boolean a = entity.attackEntityFrom(damageSource, damage);
-            int b = 1;
+            entity.attackEntityFrom(DamageSource.causePlayerDamage(player), damage);
         }
     }
 
@@ -78,9 +77,10 @@ public class AttackUtils {
 
     /**
      * 获取受到生物能力加成的武器的伤害
-     * @param itemStack  武器
-     * @param entity     玩家
-     * @return           伤害的数值
+     *
+     * @param itemStack 武器
+     * @param entity    玩家
+     * @return 伤害的数值
      */
     public static float getAttackDamage(ItemStack itemStack, @Nullable LivingEntity entity) {
         double attackDamage = 0;
@@ -88,7 +88,7 @@ public class AttackUtils {
 
         if (multimap.containsKey(Attributes.ATTACK_DAMAGE)) {
             Collection<AttributeModifier> damageMap = multimap.get(Attributes.ATTACK_DAMAGE);
-            attackDamage = ((AttributeModifier)damageMap.toArray()[0]).getAmount();
+            attackDamage = ((AttributeModifier) damageMap.toArray()[0]).getAmount();
         }
 
         if (entity != null) {
