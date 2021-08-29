@@ -17,6 +17,6 @@ public class NimlosilverSpear extends NimlosilverBuff implements ILeftClick {
     @Override
     public void onLeftClick(ItemStack stack, PlayerEntity player) {
         double attackRange = player.getAttribute(ForgeMod.REACH_DISTANCE.get()).getBaseValue();
-        AttackUtils.longerAttack(player, attackRange * 1.5, AttackUtils.getAttackDamage(stack, player));
+        AttackUtils.longerAttack(player, attackRange * 1.5);
     }
 }

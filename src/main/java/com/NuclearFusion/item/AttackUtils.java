@@ -35,13 +35,13 @@ public class AttackUtils {
      *
      * @param player 攻击者
      * @param range  攻击的距离
-     * @param damage 伤害的值
      */
-    public static void longerAttack(PlayerEntity player, double range, float damage) {
+    public static void longerAttack(PlayerEntity player, double range) {
         EntityRayTraceResult rayResult = rayTraceEntities(player, range, player.getPositionVec());
         if (rayResult != null) {
             Entity entity = rayResult.getEntity();
-            entity.attackEntityFrom(DamageSource.causePlayerDamage(player), damage);
+            //调用玩家的攻击函数 这样可以让那些在hitEntity等函数内实现攻击加成的物品实现攻击加成
+            player.attackTargetEntityWithCurrentItem(entity);
         }
     }
 
