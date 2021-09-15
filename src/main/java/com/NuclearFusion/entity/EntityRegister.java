@@ -2,6 +2,7 @@ package com.NuclearFusion.entity;
 
 import com.NuclearFusion.Naturalistia;
 import com.NuclearFusion.entity.projectile.BombSeedEntity;
+import com.NuclearFusion.entity.projectile.HookClawEntity;
 import com.NuclearFusion.entity.projectile.NimlosilverCrossbowArrowEntity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -27,9 +28,20 @@ public class EntityRegister {
     public static final RegistryObject<EntityType<BombSeedEntity>> BOMB_SEED_ENTITY =
             ENTITIES.register("bomb_seed_entity",
                     () -> EntityType.Builder.<BombSeedEntity>create(
-                                    BombSeedEntity::new,
-                                    EntityClassification.MISC)
+                            BombSeedEntity::new,
+                            EntityClassification.MISC)
                             .size(0.5F, 0.5F)
                             .trackingRange(4)
                             .updateInterval(20).build("bomb_seed_entity"));
+
+    public static final RegistryObject<EntityType<HookClawEntity>> HOOK_CLAW_ENTITY =
+            ENTITIES.register("hook_claw_entity",
+                    () -> EntityType.Builder.<HookClawEntity>create(
+                            HookClawEntity::new,
+                            EntityClassification.MISC)
+                            .size(0.5F, 0.5F)
+                            .trackingRange(4)
+                            .updateInterval(20).build("hook_claw_entity")
+
+            );
 }

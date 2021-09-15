@@ -7,6 +7,7 @@ import com.NuclearFusion.item.arms.armor.ChlorophyllBoots;
 import com.NuclearFusion.item.arms.crossbow.NimlosilverCrossbow;
 import com.NuclearFusion.item.arms.tool.hoe.ChlorophyllHoe;
 import com.NuclearFusion.item.arms.tool.mace.NimlosilverMace;
+import com.NuclearFusion.item.arms.tool.miscellaneous.ThornyHook;
 import com.NuclearFusion.item.arms.tool.pickaxe.ChlorophyllPickaxe;
 import com.NuclearFusion.item.arms.tool.shovel.ChlorophyllShovel;
 import com.NuclearFusion.item.arms.tool.shovel.NimlosilverShovel;
@@ -80,6 +81,8 @@ public class ItemRegister {
             () -> new ArmorItem(new Chlorophyll(), EquipmentSlotType.LEGS, defaultBuilder()));
 
     public static final RegistryObject<Item> CHLOROPHYLL_BOOTS = ITEMS.register("chlorophyll_boots", ChlorophyllBoots::new);
+
+    public static final RegistryObject<Item> THORNY_HOOK = ITEMS.register("thorny_hook", ThornyHook::new);
 
     public static ItemGroup creativeTab = new ItemGroup(Naturalistia.MOD_ID) {
         @Nonnull
