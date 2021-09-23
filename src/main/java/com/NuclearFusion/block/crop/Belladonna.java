@@ -2,8 +2,6 @@ package com.NuclearFusion.block.crop;
 
 import com.NuclearFusion.block.Crops;
 import com.NuclearFusion.item.ItemRegister;
-import net.minecraft.block.CropsBlock;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IItemProvider;
 
