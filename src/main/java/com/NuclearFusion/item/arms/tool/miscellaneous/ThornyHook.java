@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 public class ThornyHook extends Item {
     public ThornyHook() {
-        super(ItemRegister.defaultBuilder());
+        super(ItemRegister.defaultBuilder().maxStackSize(1).maxDamage(1951));
     }
 
     @Override

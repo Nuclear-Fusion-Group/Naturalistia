@@ -56,3 +56,9 @@ description='''
    versionRange="[1.16.5,1.17)"
    ordering="NONE"
    side="BOTH"
+[[dependencies.naturalistia]]
+   modId="mantle"
+   mandatory=true
+   versionRange="[1.6.97,)"
+   ordering="NONE"
+   side="BOTH"
