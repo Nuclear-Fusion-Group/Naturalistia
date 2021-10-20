@@ -19,11 +19,14 @@ public class ThornyHook extends Item {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         if (!worldIn.isRemote) {
             if (handIn == Hand.OFF_HAND) {
-                HookClawEntity hookClawEntity = new HookClawEntity(worldIn, playerIn);
+                ItemStack itemStack = playerIn.getHeldItem(handIn);
+                itemStack.setDamage(itemStack.getDamage() + 1);
+
+                HookClawEntity hookClawEntity = new HookClawEntity(worldIn, playerIn, true);
                 Vector3d look = playerIn.getLookVec();
 
                 //TODO 调整速度
-                hookClawEntity.shoot(look.x, look.y, look.z, 10.0F, 0);
+                hookClawEntity.shoot(look.x, look.y, look.z, 2.0F, 0);
 
                 worldIn.addEntity(hookClawEntity);
 
