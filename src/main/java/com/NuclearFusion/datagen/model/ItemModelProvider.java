@@ -64,8 +64,7 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
                 .collect(Collectors.toSet()));
 
         itemBlocks.forEach(i -> {
-            String name = Registry.ITEM.getKey(i).getPath();
-            withExistingParent(name, prefix("block/" + name));
+            withExistingParent(name(i), prefix("block/" + name(i)));
         });
     }
 
