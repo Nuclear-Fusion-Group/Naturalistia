@@ -10,8 +10,8 @@ import net.minecraftforge.common.data.ForgeRecipeProvider;
 
 import java.util.function.Consumer;
 
-public class BotanicCrucible extends ForgeRecipeProvider {
-    public BotanicCrucible(DataGenerator generatorIn) {
+public class ItemRecipe extends ForgeRecipeProvider {
+    public ItemRecipe(DataGenerator generatorIn) {
         super(generatorIn);
     }
 
@@ -26,6 +26,7 @@ public class BotanicCrucible extends ForgeRecipeProvider {
                 .key('S', Items.STONE)
                 .addCriterion("botanic_crucible", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT, Items.BONE_MEAL, Items.STONE))
                 .build(consumer);
+
         ShapedRecipeBuilder.shapedRecipe(ItemRegister.ITEM_ARMS_SHOVEL_MACE.get())
                 .patternLine(" S ")
                 .patternLine("SSS")

@@ -2,7 +2,7 @@ package com.NuclearFusion.event;
 
 import com.NuclearFusion.Naturalistia;
 import com.NuclearFusion.datagen.LootTable.LootProvider;
-import com.NuclearFusion.datagen.Recipes.BotanicCrucible;
+import com.NuclearFusion.datagen.Recipes.ItemRecipe;
 import com.NuclearFusion.datagen.model.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,7 +18,7 @@ public class DataGenEvent {
 
         }
         if (event.includeServer()) {
-            event.getGenerator().addProvider(new BotanicCrucible(event.getGenerator()));
+            event.getGenerator().addProvider(new ItemRecipe(event.getGenerator()));
             event.getGenerator().addProvider(new LootProvider(event.getGenerator()));
             event.getGenerator().addProvider(new ItemModelProvider(event.getGenerator(), helper));
         }
