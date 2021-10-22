@@ -1,4 +1,4 @@
-package com.NuclearFusion.datagen.LootTable.Block;
+package com.NuclearFusion.datagen.loottable.Block;
 
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.block.Block;
@@ -28,8 +28,8 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
     /**
      * 添加注册的方块
      *
-     * @param block
-     * @param table
+     * @param block 要添加注册的方块
+     * @param table 注册表
      */
     @Override
     protected void registerLootTable(Block block, LootTable.Builder table) {
@@ -40,7 +40,7 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
     /**
      * 获取注册的方块
      *
-     * @return
+     * @return 要注册的方块
      */
     @Nonnull
     @Override
@@ -51,7 +51,7 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
     /**
      * 添加跳过方块
      *
-     * @param blocks
+     * @param blocks 要跳过的方块
      */
     protected void skip(Block... blocks) {
         Collections.addAll(toSkip, blocks);
@@ -60,8 +60,8 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
     /**
      * 判断是否为已注册或忽略的方块
      *
-     * @param block
-     * @return
+     * @param block 要判断的方块
+     * @return 是否为已注册或忽略
      */
     protected boolean skipBlock(Block block) {
         return knownBlocks.contains(block) || toSkip.contains(block);
@@ -70,7 +70,7 @@ public abstract class BaseBlockLootTables extends BlockLootTables {
     /**
      * 批量注册方块战利品表
      *
-     * @param blocks
+     * @param blocks 方块列表
      */
     protected void dropSelfWithContents(List<RegistryObject<Block>> blocks) {
         for (RegistryObject<Block> block1 : blocks) {

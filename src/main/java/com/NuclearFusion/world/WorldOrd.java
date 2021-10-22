@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 @Mod.EventBusSubscriber(modid = Naturalistia.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class Ore {
+public class WorldOrd {
     public static ConfiguredFeature<?, ?> ORE_COPPER_CONFIG;
     public static ConfiguredFeature<?, ?> ORE_NIMLOSILVER_CONFIG;
 

@@ -1,6 +1,6 @@
-package com.NuclearFusion.datagen.LootTable;
+package com.NuclearFusion.datagen.loottable;
 
-import com.NuclearFusion.datagen.LootTable.Block.BaseBlockLootTables;
+import com.NuclearFusion.datagen.loottable.Block.BaseBlockLootTables;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.data.DataGenerator;

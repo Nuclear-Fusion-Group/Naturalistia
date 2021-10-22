@@ -1,8 +1,8 @@
-package com.NuclearFusion.datagen.LootTable;
+package com.NuclearFusion.datagen.loottable;
 
 import com.NuclearFusion.Naturalistia;
-import com.NuclearFusion.datagen.LootTable.Block.BaseBlockLootTables;
-import com.NuclearFusion.datagen.LootTable.Block.BlockLootTable;
+import com.NuclearFusion.datagen.loottable.Block.BaseBlockLootTables;
+import com.NuclearFusion.datagen.loottable.Block.BlockLootTable;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.ValidationTracker;

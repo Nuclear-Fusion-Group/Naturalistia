@@ -1,8 +1,8 @@
 package com.NuclearFusion.event;
 
 import com.NuclearFusion.Naturalistia;
-import com.NuclearFusion.datagen.LootTable.LootProvider;
-import com.NuclearFusion.datagen.Recipes.ItemRecipe;
+import com.NuclearFusion.datagen.loottable.LootProvider;
+import com.NuclearFusion.datagen.recipes.ItemRecipe;
 import com.NuclearFusion.datagen.model.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

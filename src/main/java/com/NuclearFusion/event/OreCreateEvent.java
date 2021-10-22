@@ -1,6 +1,6 @@
 package com.NuclearFusion.event;
 
-import com.NuclearFusion.world.Ore;
+import com.NuclearFusion.world.WorldOrd;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -15,8 +15,8 @@ public class OreCreateEvent {
             return;
 
         biome.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES)
-                .add(() -> Ore.ORE_COPPER_CONFIG);
+                .add(() -> WorldOrd.ORE_COPPER_CONFIG);
         biome.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES)
-                .add(() -> Ore.ORE_NIMLOSILVER_CONFIG);
+                .add(() -> WorldOrd.ORE_NIMLOSILVER_CONFIG);
     }
 }

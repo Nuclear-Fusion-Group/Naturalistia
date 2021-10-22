@@ -1,4 +1,4 @@
-package com.NuclearFusion.datagen.LootTable.Block;
+package com.NuclearFusion.datagen.loottable.Block;
 
 import com.NuclearFusion.block.BlockRegistry;
 

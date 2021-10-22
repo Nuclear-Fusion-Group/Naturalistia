@@ -1,4 +1,4 @@
-package com.NuclearFusion.datagen.Recipes;
+package com.NuclearFusion.datagen.recipes;
 
 import com.NuclearFusion.item.ItemRegister;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
