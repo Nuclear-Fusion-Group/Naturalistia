@@ -22,13 +22,14 @@ public class ThornyHook extends Item {
                 ItemStack itemStack = playerIn.getHeldItem(handIn);
                 itemStack.setDamage(itemStack.getDamage() + 1);
 
-                HookClawEntity hookClawEntity = new HookClawEntity(worldIn, playerIn, true);
+                HookClawEntity hookClawEntity = new HookClawEntity(worldIn, playerIn);
                 Vector3d look = playerIn.getLookVec();
 
-                //TODO 调整速度
                 hookClawEntity.shoot(look.x, look.y, look.z, 2.0F, 0);
 
                 worldIn.addEntity(hookClawEntity);
+
+                playerIn.addVelocity(hookClawEntity.getPosX(),hookClawEntity.getPosY(),hookClawEntity.getPosZ());
 
                 playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItem(handIn).getItem(), 20);
             }

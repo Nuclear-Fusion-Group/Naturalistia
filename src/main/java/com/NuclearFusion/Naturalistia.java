@@ -9,6 +9,7 @@ import com.NuclearFusion.item.ItemRegister;
 import com.NuclearFusion.recipe.IRecipeManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -34,6 +35,7 @@ public class Naturalistia {
 
     // Directly reference a log4j logger.
     public static final Logger LOGGER = LogManager.getLogger();
+    private static final String MODEL_DIR  = "naturalistia/model/";
     public static final String MOD_ID = "naturalistia";
 
 
@@ -104,5 +106,8 @@ public class Naturalistia {
             // register a new block here
             LOGGER.info("HELLO from Register Block");
         }
+    }
+    public static ResourceLocation getModelTexture(String name) {
+        return new ResourceLocation(MOD_ID, MODEL_DIR + name);
     }
 }
