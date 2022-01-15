@@ -5,6 +5,7 @@ import com.NuclearFusion.item.ItemRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -59,15 +60,16 @@ public class HookClawEntity extends ProjectileItemEntity implements IEntityAddit
             if (result == null) {
                 return;
             }
-            if (result instanceof EntityRayTraceResult){
-                Vector3d moveVec = result.getHitVec().subtractReverse(shooter.getPositionVec().scale(0.4D));
+            if (result instanceof EntityRayTraceResult) {
+                Vector3d moveVec = shooter.getPositionVec().subtract(result.getHitVec()).scale(0.4D);
                 ((EntityRayTraceResult) result).getEntity().addVelocity(moveVec.getX(), Math.min(moveVec.getY(), 2), moveVec.getZ());
             }
             if (result instanceof BlockRayTraceResult) {
-                //有bug
-                Vector3d moveVec = result.getHitVec().subtractReverse(shooter.getPositionVec().scale(0.4D));
-                shooter.addVelocity(moveVec.getX(), Math.min(moveVec.getY(), 2), moveVec.getZ());
-//            getShooter().moveRelative(5, getShooter().getPositionVec().subtractReverse(result.getHitVec()));
+                if (shooter instanceof ServerPlayerEntity) {
+                    Vector3d moveVec = result.getHitVec().subtract(shooter.getPositionVec()).scale(0.4D);
+                    shooter.setMotion(moveVec.getX(), Math.min(moveVec.getY(), 2), moveVec.getZ());
+                    shooter.velocityChanged = true;
+                }
             } else {
                 this.remove();
             }
