@@ -33,7 +33,7 @@ public class ClientSetup {
 
         manager.register(EntityRegister.NIMLOSILVER_CROSSBOW_ARROW.get(), new NimlosilverCrossbowArrowRenderer(manager));
         manager.register(EntityRegister.BOMB_SEED_ENTITY.get(), new BombSeedEntityRenderer(manager));
-        manager.register(EntityRegister.HOOK_CLAW_ENTITY.get(), new HookClawEntityRenderer(manager));
+        manager.register(EntityRegister.THORNY_HOOK.get(), new HookClawEntityRenderer(manager));
     }
 
     static void registerProperties() {
@@ -41,7 +41,7 @@ public class ClientSetup {
             if (entity == null) {
                 return 0.0F;
             } else {
-                return CrossbowItem.isCharged(itemStack) ? 0.0F : (float)(itemStack.getUseDuration() - entity.getItemInUseCount()) / (float)CrossbowItem.getChargeTime(itemStack);
+                return CrossbowItem.isCharged(itemStack) ? 0.0F : (float) (itemStack.getUseDuration() - entity.getItemInUseCount()) / (float) CrossbowItem.getChargeTime(itemStack);
             }
         });
 

@@ -20,17 +20,15 @@ public class ThornyHook extends Item {
         if (!worldIn.isRemote) {
             if (handIn == Hand.OFF_HAND) {
                 ItemStack itemStack = playerIn.getHeldItem(handIn);
-                itemStack.setDamage(itemStack.getDamage() + 1);
+                itemStack.damageItem(1, playerIn, (player) -> player.sendBreakAnimation(handIn));
 
                 HookClawEntity hookClawEntity = new HookClawEntity(worldIn, playerIn);
                 Vector3d look = playerIn.getLookVec();
 
                 hookClawEntity.shoot(look.x, look.y, look.z, 2.0F, 0);
-
+                //添加实体
                 worldIn.addEntity(hookClawEntity);
-
-                playerIn.addVelocity(hookClawEntity.getPosX(),hookClawEntity.getPosY(),hookClawEntity.getPosZ());
-
+                //冷却
                 playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItem(handIn).getItem(), 20);
             }
         }
