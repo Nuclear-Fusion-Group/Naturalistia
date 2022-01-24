@@ -24,6 +24,7 @@ public class HookClawEntity extends ProjectileItemEntity implements IEntityAddit
     private Entity shooter = null;
     private int shooterID = 0;
     private long time = -1;
+    private boolean isImpact = false;
     private Entity caughtEntity;
 
     public HookClawEntity(World worldIn, double x, double y, double z) {
@@ -46,7 +47,7 @@ public class HookClawEntity extends ProjectileItemEntity implements IEntityAddit
             this.remove();
         }
         //碰撞后定时移除
-        if (this.getMotion().equals(new Vector3d(0, 0, 0))) {
+        if (isImpact) {
             if (time == -1) {
                 time = System.currentTimeMillis();
                 super.tick();
@@ -80,8 +81,9 @@ public class HookClawEntity extends ProjectileItemEntity implements IEntityAddit
 
     @Override
     protected void onImpact(RayTraceResult result) {
-        if (world.isRemote) {
-            this.setMotion(0, 0, 0);
+        if (world.isRemote || isImpact) {
+            if (result instanceof BlockRayTraceResult)
+                this.dropMotion();
             return;
         }
         if (shooterID != 0) {
@@ -91,24 +93,20 @@ public class HookClawEntity extends ProjectileItemEntity implements IEntityAddit
 //                caughtEntity.setMotion(moveVec.getX(), Math.min(moveVec.getY(), 2), moveVec.getZ());
 //            }
             if (result instanceof BlockRayTraceResult) {
+                isImpact = true;
                 if (shooter instanceof PlayerEntity) {
                     Vector3d moveVec = result.getHitVec().subtract(shooter.getPositionVec()).scale(0.4D);
                     shooter.setMotion(moveVec.getX(), Math.min(moveVec.getY(), 2), moveVec.getZ());
                     shooter.velocityChanged = true;
+                    this.dropMotion();
                 }
             }
-            this.setMotion(0, 0, 0);
         }
     }
 
-    @Override
-    public boolean isInRangeToRenderDist(double distance) {
-        return true;
-    }
-
-    @Override
-    public boolean isInRangeToRender3d(double x, double y, double z) {
-        return true;
+    private void dropMotion() {
+        //为了维持渲染方向 特意写的
+        this.setMotion(getMotion().scale(0.001F));
     }
 
     @Override
@@ -130,6 +128,11 @@ public class HookClawEntity extends ProjectileItemEntity implements IEntityAddit
     public void readSpawnData(PacketBuffer additionalData) {
         this.shooterID = additionalData.readInt();
         this.shooter = this.world.getEntityByID(this.shooterID);
+    }
+
+    @Override
+    public Entity getShooter() {
+        return shooter;
     }
 
     @Override

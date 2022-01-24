@@ -12,8 +12,8 @@ public class HookClawEntityModel extends EntityModel<Entity> {
     private final ModelRenderer bone_r2;
 
     public HookClawEntityModel() {
-        textureWidth = 64;
-        textureHeight = 64;
+        textureWidth = 16;
+        textureHeight = 16;
 
         bone = new ModelRenderer(this);
         bone.setRotationPoint(0.0F, 24.0F, 0.0F);
@@ -35,7 +35,10 @@ public class HookClawEntityModel extends EntityModel<Entity> {
     }
 
     @Override
-    public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setRotationAngles(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        bone.rotateAngleX = limbSwing;
+        bone.rotateAngleY = netHeadYaw;
+        bone.rotateAngleZ = headPitch;
     }
 
     @Override
