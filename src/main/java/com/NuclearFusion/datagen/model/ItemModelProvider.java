@@ -2,6 +2,7 @@ package com.NuclearFusion.datagen.model;
 
 import com.NuclearFusion.Naturalistia;
 import com.NuclearFusion.block.crop.Shrub;
+import com.NuclearFusion.item.arms.tool.miscellaneous.ThornyHook;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.CrossbowItem;
@@ -71,6 +72,6 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
     private void registerItem(Set<Item> items) {
         items.removeAll(items.stream().filter(i -> i instanceof BlockItem || i instanceof CrossbowItem).collect(Collectors.toSet()));
         items.forEach(this::generatedItem);
-        items.stream().filter(i -> i instanceof TieredItem).forEach(this::handheldItem);
+        items.stream().filter(i -> i instanceof TieredItem || i instanceof ThornyHook).forEach(this::handheldItem);
     }
 }

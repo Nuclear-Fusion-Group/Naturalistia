@@ -35,4 +35,15 @@ public class ItemRecipe extends ForgeRecipeProvider {
                 .addCriterion("nimlocsilver_mace", InventoryChangeTrigger.Instance.forItems(ItemRegister.ITEM_INGOT_NIMLOSILVER.get()))
                 .build(consumer);
     }
+//
+//    private void buildShapedRecipe(Item item, String line1, String line2, String line3, Consumer<IFinishedRecipe> consumer, Map<Character, Item> key) {
+//        ShapedRecipeBuilder builder1 = ShapedRecipeBuilder.shapedRecipe(item)
+//                .patternLine(line1)
+//                .patternLine(line2)
+//                .patternLine(line3);
+//        for (Character ch : key.keySet()) {
+//            builder1 = builder1.key(ch, key.get(ch));
+//        }
+//        builder1.build(consumer);
+//    }
 }

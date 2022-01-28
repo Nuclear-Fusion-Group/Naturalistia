@@ -100,11 +100,11 @@ public class HookClawEntityRenderer extends EntityRenderer<HookClawEntity> {
             float y = (float) (playerY - entityY) + eyeHeight;
             float z = (float) (playerZ - entityZ);
             IVertexBuilder ivertexbuilder1 = bufferIn.getBuffer(RenderType.getLines());
-            Matrix4f matrix4f1 = matrixStackIn.getLast().getMatrix();
+            Matrix4f matrix4f = matrixStackIn.getLast().getMatrix();
             //渲染锁链
             for (int k = 0; k < 16; ++k) {
-                chainsBuilder(x, y, z, ivertexbuilder1, matrix4f1, shear(k));
-                chainsBuilder(x, y, z, ivertexbuilder1, matrix4f1, shear(k + 1));
+                chainsBuilder(x, y, z, ivertexbuilder1, matrix4f, shear(k));
+                chainsBuilder(x, y, z, ivertexbuilder1, matrix4f, shear(k + 1));
             }
 
         }
@@ -119,7 +119,7 @@ public class HookClawEntityRenderer extends EntityRenderer<HookClawEntity> {
     }
 
     private static float shear(int offset) {
-        return (float) offset / 16;
+        return offset >> 4;
     }
 
     private static void chainsBuilder(float x, float y, float z, IVertexBuilder ivertexbuilder, Matrix4f matrix4f, float offset) {
